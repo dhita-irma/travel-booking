@@ -1,0 +1,4 @@
+**\venv-travel
+*.pyc
+.idea/
+db.sqlite3
