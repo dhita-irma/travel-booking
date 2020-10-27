@@ -1,0 +1,40 @@
+{% extends 'booking/layout.html' %}
+
+{% block body %}
+<div class="container main bg-white">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-4">
+            <h2 class="text-center mb-4">Register</h2>
+
+            {% if message %}
+                <div>{{ message }}</div>
+            {% endif %}
+        
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input class="form-control" autofocus type="text" name="username" placeholder="Username" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="Email Address" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password" autocomplete="off">
+                </div>
+                <div class="text-center">
+                    <input class="btn btn-primary" type="submit" value="Register">
+                </div>
+            </form>
+            
+            <br>
+            <div class="text-center">
+                Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
