@@ -37,4 +37,19 @@ def register(request):
 
 
 def login_view(request):
-    return render(request, "booking/login.html")
+    if request.method == "POST":
+
+        # Attempt to sign user in
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+
+        # Check in authentication successful
+        if user is not None:
+            return redirect(reverse("index"))
+        else:
+            return rnder(request, "booking/login.html", {
+                "message": "Invalid username and/or password."
+            })
+    else:
+        return render(request, "booking/login.html")
