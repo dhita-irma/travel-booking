@@ -46,10 +46,16 @@ def login_view(request):
 
         # Check in authentication successful
         if user is not None:
+            login(request, user)
             return redirect(reverse("index"))
         else:
-            return rnder(request, "booking/login.html", {
+            return render(request, "booking/login.html", {
                 "message": "Invalid username and/or password."
             })
     else:
         return render(request, "booking/login.html")
+
+
+def logout_view(request):
+    logout(request)
+    return redirect(reverse("index"))
