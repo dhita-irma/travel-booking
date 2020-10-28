@@ -22,6 +22,7 @@ class Category(models.Model):
 
 class Listing(models.Model):
     title = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=12, decimal_places=0, default=99999)
     location = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name="listings")
     description = models.TextField()
     itinerary = models.TextField()
