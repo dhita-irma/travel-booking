@@ -19,8 +19,13 @@ def index(request):
 
 def catalog(request):
     listings = Listing.objects.all()
+    categories = Category.objects.all()
+    destinations = Destination.objects.all()
+
     return render(request, "booking/catalog.html", {
-        "listings": listings
+        "listings": listings,
+        "categories": categories,
+        "destinations": destinations
     })
 
 
