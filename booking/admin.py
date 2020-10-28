@@ -1,5 +1,21 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from .models import User
+
+from .models import *
+
+
+class UserAdmin(admin.ModelAdmin):
+    list_display = ("id",)
+
+
+class ListingAdmin(admin.ModelAdmin):
+    list_display = ("id", "title")
+
+
+class DestinationAdmin(admin.ModelAdmin):
+    list_display = ("id", "name")
+
 
 admin.site.register(User, UserAdmin)
+admin.site.register(Listing, ListingAdmin)
+admin.site.register(Destination, DestinationAdmin)
+admin.site.register(Category)
