@@ -9,12 +9,18 @@ class User(AbstractUser):
 class Destination(models.Model):
     name = models.CharField(max_length=30)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
 
 class Category(models.Model):
     name = models.CharField(max_length=30)
+
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name
@@ -29,6 +35,9 @@ class Listing(models.Model):
     category = models.ManyToManyField(Category, blank=True, related_name="listings")
     created_date = models.DateTimeField(default=timezone.now)
     image_url = models.URLField(blank=True)
+
+    class Meta:
+        ordering = ['-created_date']
 
     def __str__(self):
         return self.title
