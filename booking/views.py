@@ -14,7 +14,7 @@ def index(request):
     popular = Listing.objects.all()
 
     return render(request, "booking/index.html", {
-        "listings": popular[:3]
+        "listings": popular[:4]
     })
 
 
