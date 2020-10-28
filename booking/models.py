@@ -42,4 +42,9 @@ class Listing(models.Model):
     def __str__(self):
         return self.title
 
-    
+    def get_categories(self):
+        """Return string representation of listing category"""
+        categories = ""
+        for i in self.category.all():
+            categories += i.name + " "
+        return categories
