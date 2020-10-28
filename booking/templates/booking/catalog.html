@@ -29,6 +29,13 @@
                             <button class="btn btn-secondary" type="button">Go!</button>
                         </span>
                     </div>
+                    {% if user.is_authenticated and user.is_staff == True %}
+                    <div class="pt-3 text-center">
+                        <a href="">
+                            <button class="btn btn-primary">Create Listing</button>
+                        </a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
 
