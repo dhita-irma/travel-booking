@@ -14,7 +14,7 @@
             <h2>Popular</h2>
         </div>
         {% for listing in listings %}
-        <div class="col-lg-4 mb-4">
+        <div class="col-lg-3 mb-4">
             <div class="card h-100 text-center">
                 <img class="card-img-top" src="{{ listing.image_url }}" alt="">
                 <div class="card-body">
@@ -28,6 +28,9 @@
             </div>
         </div>
         {% endfor %}
+        <div class="col-12 text-center">
+            <a href="{% url 'catalog' %}"><button class="btn btn-primary">View All</button></a>
+        </div>
     </div>
     <!-- /.row -->
 

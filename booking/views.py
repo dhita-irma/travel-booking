@@ -17,6 +17,13 @@ def index(request):
     })
 
 
+def catalog(request):
+    listings = Listing.objects.all()
+    return render(request, "booking/catalog.html", {
+        "listings": listings
+    })
+
+
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
