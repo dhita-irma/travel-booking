@@ -10,7 +10,11 @@ from .models import *
 
 
 def index(request):
-    return render(request, "booking/index.html")
+    popular = Listing.objects.all()
+
+    return render(request, "booking/index.html", {
+        "listings": popular[:3]
+    })
 
 
 def register(request):

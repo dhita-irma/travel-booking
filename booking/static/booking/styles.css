@@ -11,6 +11,10 @@ body {
     flex-direction: column;
   }
   
+.row {
+  padding-top: 30px;
+}
+
 .carousel-item {
   height: 65vh;
   min-height: 300px;
@@ -25,10 +29,15 @@ body {
   margin-bottom: 30px;
 }
 
-.main {
-  padding-top: 50px;
+/* ==================
+     CARD
+================= */
+.card-desc {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
-
 
 footer {
   margin-top: auto;
