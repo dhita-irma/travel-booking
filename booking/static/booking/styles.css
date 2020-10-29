@@ -84,24 +84,32 @@ body {
 
   position: relative;
   z-index: 20;
-  top: -300px;
+  top: -50vh;
   width: 1000px;
   margin: 0px auto 0px auto;
 }
 
 .header-title {
-  font-size: 50px;
+  font-size: 8.5vh;
   font-weight: 700;
 }
 
 .header-subtitle {
-  font-size: 25px;
+  font-size: 3vh;
   font-weight: 400;
 }
 
-.input-group::-webkit-input-placeholder {
-  color: red;
+.carousel-item {
+  height: 75vh;
 }
+
+.item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 500px;
+}
+
 
 /*
 *
@@ -111,6 +119,11 @@ body {
 *
 */
 
+.headerSearch {
+  width: 50vw;
+  margin: 0px auto 0px auto;
+}
+
 #searchWrapper {
   position: relative;
   top: -180px;
@@ -119,10 +132,14 @@ body {
   width: 100%;
 }
 
-#homeSearch {
+input::-webkit-input-placeholder {
+  color: white !important;
+}
+
+/* #homeSearch {
   background-color: white;
   height: 150px;
-  /* padding: 25px 75px 25px 75px; */
+  padding: 25px 75px 25px 75px;
 }
 
 .form-control:focus {
@@ -134,11 +151,9 @@ body {
   border-bottom-width: 1px;
   border-radius: 0;
   padding-left: 0;
-}
+} */
 
-input::-webkit-input-placeholder {
-  color: white !important;
-}
+
 
 /* ==================
      CARD
