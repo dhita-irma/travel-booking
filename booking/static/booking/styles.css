@@ -71,6 +71,67 @@ body {
   color: #555;
 }
 
+/*
+*
+* ==========================================
+*                HEADER
+* ==========================================
+*
+*/
+
+.headerWrapper {
+  background-color: transparent;
+  color: white;
+  text-align: center;
+
+  position: relative;
+  z-index: 11;
+  top: -300px;
+  width: 100%;
+}
+
+.header-title {
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.header-subtitle {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+/*
+*
+* ==========================================
+*                SEARCH BAR
+* ==========================================
+*
+*/
+
+#searchWrapper {
+  position: relative;
+  top: -180px;
+  z-index: 10;
+  background-color: transparent;
+  width: 100%;
+}
+
+#homeSearch {
+  background-color: white;
+  height: 150px;
+  /* padding: 25px 75px 25px 75px; */
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.form-control-underlined {
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
 
 /* ==================
      CARD

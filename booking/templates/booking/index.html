@@ -4,6 +4,48 @@
     {% include 'booking/header.html' %}    
 {% endblock %}
 
+{% block headerText %}
+<div class="headerWrapper">
+    <div class="container">
+        <div class="header-title">Yours To Explore</div>
+        <div class="header-subtitle">Discover and book amazing activities at exclusive price</div>
+
+        <form action="">
+            <div class="row pt-3">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="input-group mb-4 border rounded-pill p-1">
+                        <div class="input-group-prepend border-0">
+                            <button id="button-addon4" type="button" class="btn btn-link text-info"><i class="fa fa-search"></i></button>
+                        </div>
+                        <input type="search" placeholder="Where do you want to go?" aria-describedby="button-addon4" class="form-control bg-none border-0" style="background-color: transparent; color: white;">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block searchbar %}
+<!-- <div id="searchWrapper">
+    <div id="homeSearch" class="container shadow">
+        <form action="">
+            <div class="row" style="height: 20px; border-bottom: 1px solid grey;">
+
+            </div>
+            <div class="row">
+                <div class="input-group mb-4 border rounded-pill p-1">
+                    <div class="input-group-prepend border-0">
+                        <button id="button-addon4" type="button" class="btn btn-link text-info"><i class="fa fa-search"></i></button>
+                    </div>
+                    <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon4" class="form-control bg-none border-0">
+                </div>
+            </div>
+        </form>
+   </div>
+</div> -->
+{% endblock  %}
 
 {% block body %}
 <div class="container">
