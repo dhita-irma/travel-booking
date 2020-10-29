@@ -3,8 +3,6 @@ html {
 }
 
 body {
-    /* padding-top: 56px; */
-
     min-height: 100vh;
 
     display: flex;
@@ -85,9 +83,10 @@ body {
   text-align: center;
 
   position: relative;
-  z-index: 11;
+  z-index: 20;
   top: -300px;
-  width: 100%;
+  width: 1000px;
+  margin: 0px auto 0px auto;
 }
 
 .header-title {
@@ -98,6 +97,10 @@ body {
 .header-subtitle {
   font-size: 25px;
   font-weight: 400;
+}
+
+.input-group::-webkit-input-placeholder {
+  color: red;
 }
 
 /*
@@ -131,6 +134,10 @@ body {
   border-bottom-width: 1px;
   border-radius: 0;
   padding-left: 0;
+}
+
+input::-webkit-input-placeholder {
+  color: white !important;
 }
 
 /* ==================
