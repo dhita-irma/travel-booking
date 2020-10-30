@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
@@ -33,6 +34,15 @@ def catalog(request):
 @staff_member_required
 def create_listing(request):
     pass
+
+
+def filter(request, location):
+    
+    location_id = Destination.objects.get(name=location).id
+    listings = Listing.objects.filter(location=location_id)
+
+    # Return filtered listings
+    return JsonResponse([listing.serialize() for listing in listings], safe=False)
 
 
 def register(request):

@@ -48,3 +48,17 @@ class Listing(models.Model):
         for i in self.category.all():
             categories += i.name + " "
         return categories
+
+    # Return JSON representation of the post
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "price": self.price,
+            "location": self.location.name,
+            "description": self.description,
+            "itinerary": self.itinerary,
+            "category": self.get_categories(),
+            "created_date": self.created_date,
+            "image_url": self.image_url
+        }
