@@ -40,8 +40,9 @@ body {
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus {
-  color: #fff;
-  text-decoration: none;
+  font-size: large;
+  /* border-bottom: 2px solid white; */
+
 }
 
 .navbar .navbar-brand {
@@ -84,19 +85,21 @@ body {
 
   position: relative;
   z-index: 20;
-  top: -50vh;
-  width: 1000px;
-  margin: 0px auto 0px auto;
+  top: -55vh;
+  width: 80vw;
+  margin: 0px auto -25vh auto;
 }
 
 .header-title {
-  font-size: 8.5vh;
+  font-size: 5vw;
   font-weight: 700;
+  text-shadow: 2px 2px 2px grey;
 }
 
 .header-subtitle {
-  font-size: 3vh;
+  font-size: 1.7vw;
   font-weight: 400;
+  text-shadow: 2px 2px 2px grey;
 }
 
 .carousel-item {
@@ -206,3 +209,28 @@ footer {
         height: 15vh;
     }
   }
+
+@media (max-width: 991.98px) {
+  /* Change navbar styling on small viewports */
+  body {
+    padding-top: 56px;
+  }
+
+  .navbar {
+      background: #fff;
+  }
+
+  .navbar .navbar-brand, .navbar .nav-link {
+      color: #555;
+  }
+
+  .carousel-item {
+    height: 50vh;
+  }
+
+  .headerWrapper {
+    top: -40vh;
+    width: 80vw;
+    margin: 0px auto -25vh auto;
+  }
+}
