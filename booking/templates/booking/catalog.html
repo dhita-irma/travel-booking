@@ -64,7 +64,7 @@
                         <div class="col-lg-12">
                             {% for destination in destinations %}
                             <div class="form-check">
-                                <input id="{{ destination }}" type="checkbox" class="form-check-input" onclick="filter(this.id)">
+                                <input id="{{ destination }}" type="checkbox" class="form-check-input" onclick="filterDestination(this.id)">
                                 <label class="form-check-label">{{ destination }}</label>
                             </div>
                             {% endfor %}
@@ -79,7 +79,7 @@
         <div class="col-md-8">
 
             <!-- Catalog -->
-            <div id="all-catalog" class="row">
+            <div id="allCatalog" class="row">
                 {% for listing in listings %}
                 <div class="col-lg-4 mb-4 listing {{ listing.location }} {{ listing.get_categories }}">
                     <div class="card h-100">
@@ -95,6 +95,9 @@
                     </div>
                 </div>
                 {% endfor %}
+            </div>
+
+            <div id="filteredCatalog" class="row" style="display: none;">
             </div>
 
             <!-- Pagination -->
