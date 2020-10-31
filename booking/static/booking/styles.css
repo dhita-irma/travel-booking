@@ -78,32 +78,52 @@ body {
 *
 */
 
-.headerWrapper {
+.index-header-wrapper {
   background-color: transparent;
   color: white;
   text-align: center;
 
   position: relative;
   z-index: 20;
-  top: -55vh;
+  top: -65vh;
   width: 80vw;
   margin: 0px auto -25vh auto;
 }
 
-.header-title {
+.header-wrapper {
+  background-color: transparent;
+  color: white;
+  text-align: center;
+
+  position: relative;
+  z-index: 20;
+  top: -33vh;
+  width: 80vw;
+  margin: 0px auto -10vh auto;
+}
+
+.index-header-wrapper .header-title {
   font-size: 5vw;
+}
+
+.header-title {
+  font-size: 4vw;
   font-weight: 700;
   text-shadow: 2px 2px 2px grey;
 }
 
-.header-subtitle {
+.index-header-wrapper .header-subtitle {
   font-size: 1.7vw;
   font-weight: 400;
   text-shadow: 2px 2px 2px grey;
 }
 
 .carousel-item {
-  height: 75vh;
+  height: 50vh;
+}
+
+.index-header .carousel-item {
+  height: 100vh;
 }
 
 .item img {
@@ -138,24 +158,6 @@ body {
 input::-webkit-input-placeholder {
   color: white !important;
 }
-
-/* #homeSearch {
-  background-color: white;
-  height: 150px;
-  padding: 25px 75px 25px 75px;
-}
-
-.form-control:focus {
-  box-shadow: none;
-}
-
-.form-control-underlined {
-  border-width: 0;
-  border-bottom-width: 1px;
-  border-radius: 0;
-  padding-left: 0;
-} */
-
 
 
 /* ==================
@@ -224,13 +226,13 @@ footer {
       color: #555;
   }
 
-  .carousel-item {
+  .index-header .carousel-item {
     height: 50vh;
   }
 
-  .headerWrapper {
-    top: -40vh;
-    width: 80vw;
-    margin: 0px auto -25vh auto;
+  .index-header-wrapper {
+    top: -35vh;
+    width: 90vw;
+    margin: 0px auto -3vh auto;
   }
 }
