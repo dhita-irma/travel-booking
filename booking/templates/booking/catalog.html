@@ -10,7 +10,7 @@
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="index.html">Home</a>
+            <a href="{% url 'index' %}">Home</a>
         </li>
         <li class="breadcrumb-item active">Blog Home 1</li>
     </ol>
@@ -85,7 +85,9 @@
                     <div class="card h-100">
                         <img class="card-img-top" src="{{ listing.image_url }}" alt="">
                         <div class="card-body p-2">
-                            <h6 class="card-title">{{ listing.title }}</h6>
+                            <a href="{% url 'catalog_item' listing.id %}" class="stretched-link">
+                                <h6 class="card-title">{{ listing.title }}</h6>
+                            </a>
                             <h6 class="card-subtitle mb-2 text-muted">{{ listing.location }}</h6>
                             <p class="card-text card-desc"></p>
                         </div>

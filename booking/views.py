@@ -31,6 +31,14 @@ def catalog(request):
     })
 
 
+def catalog_item(request, pk):
+    listing = Listing.objects.get(pk=pk)
+
+    return render(request, "booking/catalog_item.html", {
+        "listing": listing
+    })
+
+
 @staff_member_required
 def create_listing(request):
     pass
