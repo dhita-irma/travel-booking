@@ -1,47 +1,98 @@
 {% extends 'booking/layout.html' %}
 
+
 {% block body %}
-<div class="container">
+<div class="container" style="padding-top: 56px;">
 
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">{{ listing.title }}
-        <small>Subheading</small>
-    </h1>
-
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="{% url 'index' %}">Home</a>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="#">{{ listing.location }}</a>
-        </li>
-        <li class="breadcrumb-item active">{{ listing.title }}</li>
-    </ol>
-
-    <!-- Portfolio Item Row -->
+    <!-- Pictures  -->
     <div class="row">
-
-        <div class="col-md-8">
-            <img class="img-fluid" src="{{ listing.image_url }}" alt="">
+        <div class="col-12">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active"
+                        style="background-image: url('{{ listing.image_url }}')">
+                    </div>
+                    <!-- <div class="carousel-item"
+                        style="background-image: url('https://images.unsplash.com/photo-1603463262427-86b6e34fb077?ixlib=rb-1.2.1&auto=format&fit=crop&w=1490&q=80')">
+                    </div> -->
+                    <!-- <div class="carousel-item"
+                        style="background-image: url('https://images.unsplash.com/photo-1518950957614-73ac0a001408?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1481&q=80')">
+                    </div> -->
+                </div>
+            </div>
         </div>
-
-        <div class="col-md-4">
-            <h3 class="my-3">Description</h3>
-            <p>{{ listing.description }}</p>
-            <h3 class="my-3">Details</h3>
-            <ul>
-                <li>Lorem Ipsum</li>
-                <li>Dolor Sit Amet</li>
-                <li>Consectetur</li>
-                <li>Adipiscing Elit</li>
-            </ul>
-        </div>
-
     </div>
-    <!-- /.row -->
+
+    <div class="row" >
+        <div class="col-lg-9" style="background-color: transparent;">
+            <!-- Breadcrumbs -->
+            <div class="mt-2">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#">{{ listing.location }}</a>
+                    </li>
+                    <li class="breadcrumb-item active">{{ listing.title }}</li>
+                </ol>
+            </div>
+
+            <!-- Title -->
+            <h1 class="mb-3">{{ listing.title }}</h1>
+
+            <!-- Tabs -->
+            <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
+                <li class="nav-item flex-sm-fill">
+                    <a id="home2-tab" data-toggle="tab" href="#home2" role="tab" aria-controls="home2" aria-selected="true"
+                        class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 active">Description</a>
+                </li>
+                <li class="nav-item flex-sm-fill">
+                    <a id="profile2-tab" data-toggle="tab" href="#profile2" role="tab" aria-controls="profile2"
+                        aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0">Itinerary</a>
+                </li>
+                <li class="nav-item flex-sm-fill">
+                    <a id="contact2-tab" data-toggle="tab" href="#contact2" role="tab" aria-controls="contact2"
+                        aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0">Contact</a>
+                </li>
+            </ul>
+            <div id="myTab2Content" class="tab-content">
+                <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+                    <p class="leade font-italic">{{ listing.description }}</p>
+                    <!-- <p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
+                </div>
+                <div id="profile2" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
+                    <p class="leade font-italic">{{ listing.itinerary }}</p>
+                    <!-- <p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
+                </div>
+                <div id="contact2" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
+                    <p class="leade font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+        <!-- end of col -->
+    </div> 
+    <!--  end of row -->
 
     <!-- Related Projects Row -->
-    <h3 class="my-4">Related Projects</h3>
+    <h3 class="my-4">Related Items</h3>
 
     <div class="row">
 
