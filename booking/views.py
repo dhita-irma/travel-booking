@@ -54,7 +54,6 @@ def filter(request, location):
 
 
 def cart_view(request):
-
     if request.user.is_authenticated:
         user = request.user
         order, created = Order.objects.get_or_create(user=user, complete=False)
@@ -64,6 +63,21 @@ def cart_view(request):
         order = {'get_cart_total': 0, 'get_cart_items': 0}
 
     return render(request, "booking/cart.html", {
+        "items": items,
+        "order": order
+    })
+
+
+def checkout(request):
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Order.objects.get_or_create(user=user, complete=False)
+        items = order.items.all()
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+
+    return render(request, "booking/checkout.html", {
         "items": items,
         "order": order
     })

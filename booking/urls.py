@@ -13,6 +13,7 @@ urlpatterns = [
     path("catalog/new/", views.create_listing, name="create"),
 
     path("cart/", views.cart_view, name="cart"),
+    path("checkout/", views.checkout, name="checkout"),
 
     # API routes
     path("filter/<str:location>", views.filter, name="filter")
