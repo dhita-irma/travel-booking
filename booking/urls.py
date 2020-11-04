@@ -12,6 +12,8 @@ urlpatterns = [
     path("catalog/<int:pk>", views.catalog_item, name="catalog_item"),
     path("catalog/new/", views.create_listing, name="create"),
 
+    path("cart/", views.cart_view, name="cart"),
+
     # API routes
     path("filter/<str:location>", views.filter, name="filter")
 ]

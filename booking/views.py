@@ -53,6 +53,9 @@ def filter(request, location):
     return JsonResponse([listing.serialize() for listing in listings], safe=False)
 
 
+def cart_view(request):
+    return render(request, "booking/cart.html")
+
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
