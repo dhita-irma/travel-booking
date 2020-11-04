@@ -15,7 +15,12 @@ class DestinationAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
 
 
+
+
 admin.site.register(User, UserAdmin)
 admin.site.register(Listing, ListingAdmin)
 admin.site.register(Destination, DestinationAdmin)
 admin.site.register(Category)
+admin.site.register(Order)
+admin.site.register(OrderItem)
+admin.site.register(ShippingAddress)
