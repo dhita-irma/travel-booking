@@ -93,7 +93,8 @@
             <div class="card mt-4">
                 <div class="card-body">
                     <h4>Price: Rp {{ listing.price }}</h4>
-                    <button class="btn btn-primary">Add to cart</button>
+                    <button data-id="{{ listing.id }}" data-action="add" class="btn btn-primary update-cart">
+                        Add to cart </button>
                 </div>
             </div>
         </div>

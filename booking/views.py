@@ -8,6 +8,8 @@ from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
+import json
+
 from .models import *
 
 
@@ -51,6 +53,25 @@ def filter(request, location):
 
     # Return filtered listings
     return JsonResponse([listing.serialize() for listing in listings], safe=False)
+
+
+def update_cart(request):
+
+    # Update cart must be via POST 
+    if request.method != 'POST':
+        return JsonResponse({"error": "POST request required."}, status=400)
+
+    # Take JSON string and convert it to dict
+    data = json.loads(request.body)
+
+    # Get the data needed
+    listing_id = data.get("id", "")
+    action = data.get("action", "")
+
+    print('action:', action)
+    print('id:', listing_id)
+
+    return JsonResponse('Item was added', safe=False)
 
 
 def cart_view(request):
