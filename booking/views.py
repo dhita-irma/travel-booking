@@ -56,22 +56,32 @@ def filter(request, location):
 
 
 def update_cart(request):
-
-    # Update cart must be via POST 
     if request.method != 'POST':
         return JsonResponse({"error": "POST request required."}, status=400)
 
-    # Take JSON string and convert it to dict
+    # Take JSON string and convert it to dict & get the data needed 
     data = json.loads(request.body)
-
-    # Get the data needed
     listing_id = data.get("id", "")
     action = data.get("action", "")
 
-    print('action:', action)
-    print('id:', listing_id)
+    print(f"Listing ID: {listing_id} Action: {action}")
 
-    return JsonResponse('Item was added', safe=False)
+    user = request.user
+    listing = Listing.objects.get(id=listing_id)
+    order, created = Order.objects.get_or_create(user=user, complete=False)
+    orderItem, crerated = OrderItem.objects.get_or_create(order=order, listing=listing)
+
+    if action == "add":
+        orderItem.quantity += 1
+    elif action == "remove":
+        orderItem.quantity -= 1
+
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+    return JsonResponse('Cart has been updated.', safe=False)
 
 
 def cart_view(request):
