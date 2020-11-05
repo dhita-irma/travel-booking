@@ -93,8 +93,21 @@
             <div class="card mt-4">
                 <div class="card-body">
                     <h4>Price: Rp {{ listing.price }}</h4>
-                    <button data-id="{{ listing.id }}" data-action="add" class="btn btn-primary update-cart">
-                        Add to cart </button>
+                    <!-- Date Picker Input -->
+                    <div class="form-group mb-4">
+                        <div class="datepicker date input-group p-0 shadow-sm">
+                            <input type="text" placeholder="Choose a reservation date" class="form-control py-4 px-4" id="reservationDate">
+                            <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-clock-o"></i></span></div>
+                        </div>
+                    </div><!-- DEnd ate Picker Input -->
+                    
+                    <!-- For Demo Purpose -->
+                    <div class="text-center">
+                        <p class="font-italic text-muted mb-0">Your reservation day is</p>
+                        <h4 id="pickedDate" class="font-weight-bold text-uppercase mb-3">Not set yet</h4>
+                        <button data-id="{{ listing.id }}" data-action="add" class="update-cart btn btn-primary btn-sm px-4 rounded-pill text-uppercase font-weight-bold shadow-sm">
+                            Add to Cart</button>
+                    </div>
                 </div>
             </div>
         </div>
