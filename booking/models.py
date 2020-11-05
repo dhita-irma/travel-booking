@@ -36,6 +36,8 @@ class Listing(models.Model):
     category = models.ManyToManyField(Category, blank=True, related_name="listings")
     created_date = models.DateTimeField(auto_now_add=True)
     image_url = models.URLField(blank=True)
+    pick_up = models.BooleanField(default=False, null=True, blank=False)
+    meeting_point = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:
         ordering = ['-created_date']
@@ -72,6 +74,8 @@ class Order(models.Model):
     transaction_id = models.CharField(max_length=200, null=True)
 
     def __str__(self):
+        if self.transaction_id == None: 
+            return "ERROR: Transaction id is NULL"
         return self.transaction_id
 
     @property
@@ -92,11 +96,15 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True, related_name="items")
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    trip_date = models.DateField(null=True, blank=True)
 
     @property
     def get_total(self):
         total = self.listing.price * self.quantity
         return total
+
+    def __str__(self):
+        return self.listing.title
 
 
 class ShippingAddress(models.Model):
@@ -127,4 +135,4 @@ class ContactInfo(models.Model):
     phone_number = models.CharField(max_length=12) # TODO: Use phone number library
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.title} {self.first_name} {self.last_name}"
