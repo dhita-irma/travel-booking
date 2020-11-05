@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.utils import timezone
+from django_countries.fields import CountryField
+
 
 class User(AbstractUser):
     pass
@@ -33,7 +34,7 @@ class Listing(models.Model):
     description = models.TextField()
     itinerary = models.TextField()
     category = models.ManyToManyField(Category, blank=True, related_name="listings")
-    created_date = models.DateTimeField(default=timezone.now)
+    created_date = models.DateTimeField(auto_now_add=True)
     image_url = models.URLField(blank=True)
 
     class Meta:
@@ -105,8 +106,25 @@ class ShippingAddress(models.Model):
     city = models.CharField(max_length=200, null=True)
     state = models.CharField(max_length=200, null=True)
     zipcode = models.CharField(max_length=200, null=True)
-    date_added = models.DateTimeField(default=timezone.now)
+    date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.address
 
+
+class ContactInfo(models.Model):
+    TITLE_CHOICES = [
+        ('MR', 'MR'),
+        ('MRS', 'MRS'),
+        ('MISS', 'MISS'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name="contact_info")
+    title = models.CharField(max_length=4, choices=TITLE_CHOICES)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    country = CountryField(blank_label='(select country)')
+    phone_number = models.CharField(max_length=12) # TODO: Use phone number library
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"

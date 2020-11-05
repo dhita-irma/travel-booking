@@ -14,7 +14,8 @@ class ListingAdmin(admin.ModelAdmin):
 class DestinationAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
 
-
+class ContactInfoAdmin(admin.ModelAdmin):
+    list_display = ("__str__", "user", "country", "phone_number")
 
 
 admin.site.register(User, UserAdmin)
@@ -24,3 +25,5 @@ admin.site.register(Category)
 admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(ShippingAddress)
+admin.site.register(ContactInfo, ContactInfoAdmin)
+
