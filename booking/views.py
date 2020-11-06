@@ -41,8 +41,13 @@ def catalog(request):
 def catalog_item(request, pk):
     """Render page displaying all listings"""
 
-    listing = Listing.objects.get(pk=pk)
+    # Query for requested listing
+    try:
+        listing = Listing.objects.get(pk=pk)
+    except Listing.DoesNotExist:
+        return JsonResponse({"error": f"Listing with pk {pk} not found."}, status=404)
 
+    # Render detail page
     return render(request, "booking/catalog_item.html", {
         "listing": listing
     })
@@ -109,6 +114,8 @@ def update_cart(request):
 
 
 def cart_view(request):
+    """Render page displaying items in cart"""
+
     if request.user.is_authenticated:
         user = request.user
         order, created = Order.objects.get_or_create(user=user, complete=False)
@@ -124,6 +131,8 @@ def cart_view(request):
 
 
 def checkout(request):
+    """Render a page to checkout items in cart"""
+
     if request.user.is_authenticated:
         user = request.user
         order, created = Order.objects.get_or_create(user=user, complete=False)
