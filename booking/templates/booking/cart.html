@@ -50,7 +50,7 @@
                                 <th class="pl-0 border-0" scope="row">
                                     <div class="media align-items-center">
                                         <a class="reset-anchor d-block animsition-link" href="#"><img src="{{ item.listing.image_url }}" alt="..." width="70" /></a>
-                                        <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="#">{{ item.listing.title }}</a></strong></div>
+                                        <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="{% url 'catalog_item' item.listing.pk %}">{{ item.listing.title }}</a></strong></div>
                                         <div class="media-body ml-3"><small>{{ item.formatted_date }}</small></div>
                                     </div>
                                 </th>
@@ -69,7 +69,7 @@
                                 <td class="align-middle border-0">
                                     <p class="mb-0 small">{{ item.get_total }}</p>
                                 </td>
-                                <td class="align-middle border-0"><a class="reset-anchor" href="#"><i class="fas fa-trash-alt small text-muted"></i></a></td>
+                                <td class="align-middle border-0"><a data-id="{{ item.listing.id }}" data-action="remove_all" data-date="{{ item.formatted_date }}" class="update-cart reset-anchor" href="#"><i class="fas fa-trash-alt small text-muted"></i></a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
