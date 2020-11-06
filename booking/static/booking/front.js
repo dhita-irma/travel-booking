@@ -47,7 +47,7 @@ $(function () {
         // INITIALIZE DATEPICKER PLUGIN
         $('.datepicker').datepicker({
             clearBtn: true,
-            format: "dd/mm/yyyy"
+            format: "M dd, yyyy"
         });
 
 
@@ -55,6 +55,7 @@ $(function () {
         $('#reservationDate').on('change', function () {
             var pickedDate = $('input').val();
             $('#pickedDate').html(pickedDate);
+            $('.update-cart').attr('data-date', pickedDate);
         });
 
 });

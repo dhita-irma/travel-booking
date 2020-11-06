@@ -8,12 +8,15 @@ from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
+from datetime import datetime
 import json
 
 from .models import *
 
 
 def index(request):
+    """Render homepage"""
+
     popular = Listing.objects.all()
 
     return render(request, "booking/index.html", {
@@ -22,6 +25,8 @@ def index(request):
 
 
 def catalog(request):
+    """Render page displaying all listings"""
+
     listings = Listing.objects.all()
     categories = Category.objects.all()
     destinations = Destination.objects.all()
@@ -34,6 +39,8 @@ def catalog(request):
 
 
 def catalog_item(request, pk):
+    """Render page displaying all listings"""
+
     listing = Listing.objects.get(pk=pk)
 
     return render(request, "booking/catalog_item.html", {
@@ -47,41 +54,58 @@ def create_listing(request):
 
 
 def filter(request, location):
+    """API returning filtered listings based on location"""
     
-    location_id = Destination.objects.get(name=location).id
-    listings = Listing.objects.filter(location=location_id)
+    # Query for requested location
+    try:
+        location_id = Destination.objects.get(name=location).id
+    except Destination.DoesNotExist:
+        return JsonResponse({"error": f"Destination '{location}' not found."}, status=404)
 
     # Return filtered listings
-    return JsonResponse([listing.serialize() for listing in listings], safe=False)
+    if request.method == 'GET':
+        listings = Listing.objects.filter(location=location_id)
+        return JsonResponse([listing.serialize() for listing in listings], safe=False)
+    else:
+        return JsonResponse({"error": "GET request required."}, status=400)
 
 
 def update_cart(request):
+    """API to update cart items"""
+
     if request.method != 'POST':
         return JsonResponse({"error": "POST request required."}, status=400)
 
-    # Take JSON string and convert it to dict & get the data needed 
+    # Convert JSON string to dict and get the data needed 
     data = json.loads(request.body)
     listing_id = data.get("id", "")
     action = data.get("action", "")
+    date = data.get("date", "")
 
     print(f"Listing ID: {listing_id} Action: {action}")
+    print(f"Reservation date: {date}")
 
+    # Query for order item data
     user = request.user
     listing = Listing.objects.get(id=listing_id)
+    reservation_date = datetime.strptime(date, '%b %d, %Y').date()
     order, created = Order.objects.get_or_create(user=user, complete=False)
-    orderItem, crerated = OrderItem.objects.get_or_create(order=order, listing=listing)
+    orderItem, created = OrderItem.objects.get_or_create(order=order, listing=listing, reservation_date=reservation_date)
 
+    # Update quantity based on action
     if action == "add":
         orderItem.quantity += 1
     elif action == "remove":
         orderItem.quantity -= 1
+    elif action == "remove_all":
+        orderItem.quantity = 0
 
     orderItem.save()
 
     if orderItem.quantity <= 0:
         orderItem.delete()
 
-    return JsonResponse('Cart has been updated.', safe=False)
+    return JsonResponse({"message": "Cart updated successfully."}, status=200)
 
 
 def cart_view(request):

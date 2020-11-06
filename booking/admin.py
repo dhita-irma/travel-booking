@@ -14,8 +14,13 @@ class ListingAdmin(admin.ModelAdmin):
 class DestinationAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
 
+
 class ContactInfoAdmin(admin.ModelAdmin):
     list_display = ("__str__", "user", "country", "phone_number")
+
+
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = ("__str__", "order", "reservation_date", "quantity")
 
 
 admin.site.register(User, UserAdmin)
@@ -23,7 +28,7 @@ admin.site.register(Listing, ListingAdmin)
 admin.site.register(Destination, DestinationAdmin)
 admin.site.register(Category)
 admin.site.register(Order)
-admin.site.register(OrderItem)
+admin.site.register(OrderItem, OrderItemAdmin)
 admin.site.register(ShippingAddress)
 admin.site.register(ContactInfo, ContactInfoAdmin)
 

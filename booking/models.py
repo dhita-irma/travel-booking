@@ -103,6 +103,9 @@ class OrderItem(models.Model):
         total = self.listing.price * self.quantity
         return total
 
+    def formatted_date(self):
+        return self.reservation_date.strftime('%b %d, %Y')
+
     def __str__(self):
         return self.listing.title
 
