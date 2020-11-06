@@ -96,7 +96,7 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True, related_name="items")
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
-    trip_date = models.DateField(null=True, blank=True)
+    reservation_date = models.DateField(null=True, blank=True)
 
     @property
     def get_total(self):
