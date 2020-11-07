@@ -11,6 +11,7 @@ from django.urls import reverse
 from datetime import datetime
 import json
 
+from . import forms
 from .models import *
 
 
@@ -139,11 +140,12 @@ def checkout(request):
         items = order.items.all()
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'pick_up': False}
 
     return render(request, "booking/checkout.html", {
         "items": items,
-        "order": order
+        "order": order,
+        "contact_form": forms.ContactInfoForm(),
     })
 
 def register(request):
