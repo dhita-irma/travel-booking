@@ -36,3 +36,30 @@ function updateUserOrder(id, action, date) {
         console.log(data)
     });
 }
+
+function submitFormData(){
+    console.log('Payment button clicked.')
+    const form = document.getElementById('contact-form')
+
+    // console.log(form.id_phone_number.value)
+
+    // Send contact info form 
+    fetch('/process_order/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            "X-CSRFToken": csrftoken,
+        },
+        body: JSON.stringify({
+            'title': form.id_title.value,
+            'first_name': form.id_first_name.value,
+            'last_name': form.id_last_name.value,
+            'country': form.id_country.value,
+            'phone_number': form.id_phone_number.value,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+    });
+}

@@ -19,6 +19,7 @@ class ContactInfoForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.helper.form_id = 'contact-form'
         self.helper.layout = Layout(
             Div(
                 Div('title', css_class='col-md-2'),

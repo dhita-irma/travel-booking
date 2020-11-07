@@ -306,6 +306,9 @@ input.form-control::placeholder {
   display: none;
 }
 
+.hidden {
+  display: none;
+}
 
 /* =================
       MEDIA QUERY

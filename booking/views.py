@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
@@ -147,6 +147,40 @@ def checkout(request):
         "order": order,
         "contact_form": forms.ContactInfoForm(),
     })
+
+
+def process_order(request):
+    """"API to submit contact information and process payment"""
+
+    if request.method != 'POST':
+        return JsonResponse({"error": "POST request required."}, status=400)
+
+    # Convert JSON string to dict
+    data = json.loads(request.body)
+
+    # Get contact details 
+    title = data.get("title", "")
+    first_name = data.get("first_name", "")
+    last_name = data.get("last_name", "")
+    country = data.get("country", "")
+    phone_number = data.get("phone_number", "")
+
+    # Save contact details to database
+    contact, created = ContactInfo.objects.get_or_create(
+        user= request.user,
+        title = title,
+        first_name = first_name,
+        last_name = last_name,
+        country = country,
+        phone_number = phone_number
+    )
+    contact.save()
+
+    print("Contact details are saved.")
+
+    return JsonResponse({"message": "Wohoo! Contact is saved successfully!"}, status=200)
+    
+                
 
 def register(request):
     if request.method == "POST":
