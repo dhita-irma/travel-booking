@@ -156,7 +156,16 @@ def process_order(request):
         return JsonResponse({"error": "POST request required."}, status=400)
 
     # Convert JSON string to dict
+    transaction_id = datetime.now().timestamp()
     data = json.loads(request.body)
+
+    user = request.user
+    order, created = Order.objects.get_or_create(user=user, complete=False)
+
+    total = float(data.get("total", ""))
+    if total == float(order.get_cart_total):
+        order.complete = True
+    order.save()
 
     # Get contact details 
     title = data.get("title", "")
@@ -178,7 +187,7 @@ def process_order(request):
 
     print("Contact details are saved.")
 
-    return JsonResponse({"message": "Wohoo! Contact is saved successfully!"}, status=200)
+    return JsonResponse({"message": "Wohoo! Transaction is successful!"}, status=200)
     
                 
 

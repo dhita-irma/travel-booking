@@ -37,7 +37,7 @@ function updateUserOrder(id, action, date) {
     });
 }
 
-function submitFormData(){
+function submitFormData(total){
     console.log('Payment button clicked.')
     const form = document.getElementById('contact-form')
 
@@ -56,10 +56,16 @@ function submitFormData(){
             'last_name': form.id_last_name.value,
             'country': form.id_country.value,
             'phone_number': form.id_phone_number.value,
+            'total': total
         })
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        console.log('Success', data);
+        alert('Transaction completed');
+
+        // Redirect user to homepage 
+        window.location.href = "/"
+
     });
 }
