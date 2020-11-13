@@ -58,14 +58,18 @@ $(function () {
             $('.update-cart').attr('data-date', pickedDate);
         });
 
+        // Activate navbar in all page but index 
+        var pathname = window.location.pathname;
+        if (pathname != '/') {
+            $('.navbar').addClass('active');
+        } else {
+            // Scroll to toggle transparent navbar on and off
+            $(window).on('scroll', function () {
+                if ($(window).scrollTop() > 10) {
+                    $('.navbar').addClass('active');
+                } else {
+                    $('.navbar').removeClass('active');
+                }
+            });
+        }
 });
-
-/* ===============================================================
-     COUNTRY SELECT BOX FILLING
-  =============================================================== */
-  $.getJSON('js/countries.json', function (data) {
-    $.each(data, function (key, value) {
-        var selectOption = "<option value='" + value.name + "' data-dial-code='" + value.dial_code + "'>" + value.name + "</option>";
-        $("select.country").append(selectOption);
-    });
-})

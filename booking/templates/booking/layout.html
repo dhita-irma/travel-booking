@@ -18,6 +18,7 @@
     <script type="text/javascript">
         var user='{{ request.user }}'
 
+        // Get crsf token
         function getToken(name) {
             let cookieValue = null;
             if (document.cookie && document.cookie !== '') {
@@ -33,7 +34,6 @@
             }
             return cookieValue;
         }
-
         const csrftoken = getToken('csrftoken');
     </script>
 
@@ -72,17 +72,6 @@
     <script src="{% static 'booking/main.js' %}"></script>
     <script src="{% static 'booking/cart.js' %}"></script>
     
-    <script>
-        $(function () {
-            $(window).on('scroll', function () {
-                if ($(window).scrollTop() > 10) {
-                    $('.navbar').addClass('active');
-                } else {
-                    $('.navbar').removeClass('active');
-                }
-            });
-        });
-    </script>
     <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </body>

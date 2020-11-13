@@ -1,7 +1,7 @@
 {% extends 'booking/layout.html' %}
 
 {% block header %}
-<header>
+<header class="navbar-padding">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active"
@@ -121,7 +121,7 @@
                             <p class="card-text card-desc"></p>
                         </div>
                         <div class="card-footer text-right p-2">
-                            Rp {{ listing.price }}
+                            ${{ listing.price }}
                         </div>
                     </div>
                 </div>

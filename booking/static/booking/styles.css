@@ -310,6 +310,10 @@ input.form-control::placeholder {
   display: none;
 }
 
+.navbar-padding {
+  padding-top: 56px;
+}
+
 /* =================
       MEDIA QUERY
 ==================== */
