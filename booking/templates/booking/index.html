@@ -36,16 +36,18 @@
             <h2>Popular</h2>
         </div>
         {% for listing in listings %}
-        <div class="col-lg-3 mb-4">
-            <div class="card h-100 text-center">
+        <div class="col-lg-3 listing {{ listing.location }} {{ listing.get_categories }} card-padding">
+            <div class="card h-100 listing-card">
                 <img class="card-img-top" src="{{ listing.image_url }}" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ listing.title }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-                    <p class="card-text card-desc">{{ listing.description }}</p>
+                <div class="card-body p-2">
+                    <a href="{% url 'catalog_item' listing.id %}" class="stretched-link">
+                        <h6 class="card-title">{{ listing.title }}</h6>
+                    </a>
+                    <p class="card-subtitle"> <i class="fas fa-map-marker-alt"></i> {{ listing.location }}</p>
+                    <p class="card-text card-desc"></p>
                 </div>
-                <div class="card-footer">
-                    Rp {{ listing.price }}
+                <div class="card-footer p-2">
+                    US$ {{ listing.price }}<span>/pax</span>
                 </div>
             </div>
         </div>
