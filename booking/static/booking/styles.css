@@ -291,6 +291,15 @@ input.form-control::placeholder {
 }
 
 
+/* Borders */
+.border-bottom {
+  border-bottom: 1px solid grey;
+}
+
+.border-right {
+  border-right: 1px solid grey;
+}
+
 /* Other */
 
 .reset-anchor {

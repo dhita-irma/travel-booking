@@ -23,7 +23,6 @@
 <div class="header-wrapper">
     <div class="container">
         <div class="header-title">Explore Indonesia</div>
-        <!-- <div class="header-subtitle">Discover and book amazing adventures at exclusive price</div> -->
     </div>
 </div>
 {% endblock %}
@@ -33,79 +32,46 @@
 <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Explore Indonesia
-        <small>Subheading</small>
-    </h1>
-
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="{% url 'index' %}">Home</a>
-        </li>
-        <li class="breadcrumb-item active">Blog Home 1</li>
-    </ol>
+    <div class="border-bottom">
+        <h1 class="mt-4 mb-3">Indonesia</h1>
+    </div>
 
     <div class="row">
         <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-            <!-- Search Widget -->
-            <div class="card mb-4">
-                <h5 class="card-header">Search</h5>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-append">
-                            <button class="btn btn-secondary" type="button">Go!</button>
-                        </span>
-                    </div>
-                    {% if user.is_authenticated and user.is_staff == True %}
-                    <div class="pt-3 text-center">
-                        <a href="">
-                            <button class="btn btn-primary">Create Listing</button>
-                        </a>
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-
-            <!-- Categories -->
-            <div class="card my-4">
-                <h5 class="card-header">Categories</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            {% for category in categories %}
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input">
-                                <label class="form-check-label">{{ category }}</label>
-                            </div>
-                            {% endfor %}
+        <div class="col-md-3 border-right">
+            <div class="pt-3">
+                
+                <!-- Destinations -->
+                <div class="border-bottom pb-3">
+                    <h5>Destinations</h5>
+                    <div class="pl-3">
+                        {% for destination in destinations %}
+                        <div class="form-check">
+                            <input id="{{ destination }}" type="checkbox" class="form-check-input" onclick="filterDestination(this.id)">
+                            <label class="form-check-label">{{ destination }}</label>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
-            </div>
 
-            <!-- Destinations -->
-            <div class="card my-4">
-                <h5 class="card-header">Destinations</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            {% for destination in destinations %}
-                            <div class="form-check">
-                                <input id="{{ destination }}" type="checkbox" class="form-check-input" onclick="filterDestination(this.id)">
-                                <label class="form-check-label">{{ destination }}</label>
-                            </div>
-                            {% endfor %}
+                <!-- Categories -->
+                <div class="py-3">
+                    <h5>Categories</h5>
+                    <div class="pl-3">
+                        {% for category in categories %}
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input">
+                            <label class="form-check-label">{{ category }}</label>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
 
         <!-- Catalog Column -->
-        <div class="col-md-8">
+        <div class="col-md-9">
 
             <!-- Catalog -->
             <div id="allCatalog" class="row">
