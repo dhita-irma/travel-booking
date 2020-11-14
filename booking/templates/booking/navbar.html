@@ -10,20 +10,17 @@
                         Destinations
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                        <a class="dropdown-item" href="portfolio-1-col.html">Bali</a>
-                        <a class="dropdown-item" href="portfolio-2-col.html">Java</a>
-                        <a class="dropdown-item" href="portfolio-3-col.html">Kalimantan</a>
-                        <a class="dropdown-item" href="portfolio-4-col.html">Nusa Tenggara</a>
-                        <a class="dropdown-item" href="portfolio-item.html">Papua</a>
+                        {% for destination in destinations %}
+                            <a class="dropdown-item" href="#">{{ destination.name }}</a>
+                        {% endfor %}
                     </div>
                 </li>
                 <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" href="services.html">Blog</a></li>
                 <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" href="services.html">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">({{ order.get_cart_items }})</small></a></li>
                 
                 {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="#"> <i class="far fa-heart mr-1"></i><small class="text-gray"> (0)</small></a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"> <i class="fas fa-user-alt mr-1 text-gray"></i>Logout</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" href="{% url 'cart' %}"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart <small class="font-weight-normal">({{ order.get_cart_items }})</small></a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" href="{% url 'logout' %}"> <i class="fas fa-user-alt mr-1 text-gray"></i>Logout</a></li>
 
                 {% else %}
                 <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" href="{% url 'register' %}">Register</a></li>

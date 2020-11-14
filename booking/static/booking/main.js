@@ -33,7 +33,7 @@ function filterDestination(destination) {
               <div class="card h-100 listing-card">
                   <img class="card-img-top" src="${listings[i].image_url}" alt="">
                   <div class="card-body p-2">
-                      <a href="{% url 'catalog_item' listing.id %}" class="stretched-link">
+                      <a href="/catalog/${listings[i].id}" class="stretched-link">
                           <h6 class="card-title">${listings[i].title}</h6>
                       </a>
                       <p class="card-subtitle"> <i class="fas fa-map-marker-alt"></i>  ${listings[i].location}</p>
