@@ -16,11 +16,21 @@
                     </div>
                 </li>
                 <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" href="services.html">Blog</a></li>
-                <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" href="services.html">About</a></li>
                 
                 {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" href="{% url 'cart' %}"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart <small class="font-weight-normal">({{ order.get_cart_items }})</small></a></li>
-                <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" href="{% url 'logout' %}"> <i class="fas fa-user-alt mr-1 text-gray"></i>Logout</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-alt mr-1 text-gray"></i>{{ user.username }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item" href="#">Bookings</a>
+                        <a class="dropdown-item" href="#">Wishlist</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </li>
 
                 {% else %}
                 <li class="nav-item"><a class="nav-link text-uppercase font-weight-bold" href="{% url 'register' %}">Register</a></li>
