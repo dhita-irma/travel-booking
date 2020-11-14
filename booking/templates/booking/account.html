@@ -1,0 +1,50 @@
+{% extends 'booking/layout.html' %}
+
+{% block body %}
+
+<div class="container navbar-padding">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Account</h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Account</li>
+    </ol>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-lg-3 p-2">
+            <div class="acc-sidebar">
+                <div class="profile border-bottom">
+                    <img src="https://lh3.googleusercontent.com/proxy/yhjnCs-5uvZW3-_2ePlnDGwBJCj34CmCIzVj331gEJfdgfa-wfhoF4-q6DEpEC_PEd-sirwE8X80TPVUdTsxvmm9CM6-BKz55muSwtNDrfJd17ZTAIIYqQ" alt="avatar">
+                    <h4 class="pt-2"> {{ user.get_full_name }}</h4>
+                </div>
+                <div class="list-group">
+                    <button type="button" class="list-group-item list-group-item-action"><i class="icon far fa-user-circle"></i>Profile</button>
+                    <button type="button" class="list-group-item list-group-item-action"><i class="icon far fa-calendar-check"></i>Bookings</button>
+                    <button type="button" class="list-group-item list-group-item-action border-bottom"><i class="icon far fa-heart"></i>Wishlist</button>
+                    <button type="button" class="list-group-item list-group-item-action"><i class="icon fas fa-sign-out-alt"></i>Log Out</button>
+                </div>
+                
+            </div>
+        </div>
+        <!-- Content Column -->
+        <div class="col-lg-9 p-2">
+            <div class="acc-content p-4">
+                <h2>Section Heading</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, et temporibus, facere perferendis
+                    veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate
+                    dolores iure maxime ducimus fugit.</p>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+    
+{% endblock %}

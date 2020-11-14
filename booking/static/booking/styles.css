@@ -257,14 +257,14 @@ footer {
  */
 
 .breadcrumb {
-  background: #f8f9fa;
+  background: none;
+  padding-left: 0px;
 }
 
 .breadcrumb-item {
   font-size: 0.85rem;
-  text-transform: uppercase;
   letter-spacing: 0.07em;
-  font-weight: 900;
+  font-weight: 500;
   color: #111111;
 }
 
@@ -322,6 +322,45 @@ input.form-control::placeholder {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
+
+
+
+/* Account Sidebar */
+.acc-sidebar {
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Account Content */
+.acc-content {
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Profile */
+.profile {
+  text-align: center;
+  padding: 50px 15px 50px 15px;
+}
+
+.profile img {
+  border-radius: 50%;
+  width: 100px;
+  object-fit: cover;
+}
+
+/* Menu */
+.acc-sidebar .list-group-item {
+  border: none;
+}
+
+.acc-sidebar .list-group-item:focus {
+  outline: none!important;
+  background-color: #e9ecef;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 15px;
+}
 
 /* Borders */
 .border-bottom {
