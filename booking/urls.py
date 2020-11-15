@@ -15,6 +15,7 @@ urlpatterns = [
     path("cart/", views.cart_view, name="cart"),
     path("checkout/", views.checkout, name="checkout"),
 
+    path("bookings/", views.bookings, name="bookings"),
     # API routes
     path("filter/<str:location>", views.filter, name="filter"),
     path("update_cart/", views.update_cart, name="update_item"),

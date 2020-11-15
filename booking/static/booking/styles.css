@@ -323,16 +323,40 @@ input.form-control::placeholder {
 }
 
 
-
-
 /* Account Sidebar */
 .acc-sidebar {
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Account Content */
-.acc-content {
+.booked-item {
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+  padding: 15px 50px 15px 50px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.booked-item:hover {
+  cursor: pointer;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.booked-item img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.bold-black {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.bold-green {
+  font-weight: 600;
+  font-size: 17px;
+  color: green;
 }
 
 /* Profile */
@@ -344,6 +368,7 @@ input.form-control::placeholder {
 .profile img {
   border-radius: 50%;
   width: 100px;
+  height: 100px;
   object-fit: cover;
 }
 
@@ -392,6 +417,10 @@ input.form-control::placeholder {
 
 .navbar-padding {
   padding-top: 56px;
+}
+
+.letter-spacing {
+  letter-spacing: 0.07em;;
 }
 
 /* =================

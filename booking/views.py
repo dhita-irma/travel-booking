@@ -1,6 +1,7 @@
 from django.contrib import messages
-from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import JsonResponse, HttpResponse
 
@@ -188,8 +189,23 @@ def process_order(request):
     print("Contact details are saved.")
 
     return JsonResponse({"message": "Wohoo! Transaction is successful!"}, status=200)
+
+
+@login_required(login_url='/login/') 
+def bookings(request):
+
+    orders = Order.objects.filter(user=request.user, complete=True)
+    bookings = []
+
+    # Iterate order items and append it to bookings list
+    for order in orders:
+        for i in range(order.items.count()):
+            bookings.append(order.items.all()[i])
+
+    return render(request, "booking/bookings.html", {
+        "bookings": bookings,
+    })
     
-                
 
 def register(request):
     if request.method == "POST":

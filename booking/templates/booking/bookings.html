@@ -1,4 +1,5 @@
 {% extends 'booking/layout.html' %}
+{% load static %}
 
 {% block body %}
 
@@ -20,8 +21,8 @@
         <div class="col-lg-3 p-2">
             <div class="acc-sidebar">
                 <div class="profile border-bottom">
-                    <img src="https://lh3.googleusercontent.com/proxy/yhjnCs-5uvZW3-_2ePlnDGwBJCj34CmCIzVj331gEJfdgfa-wfhoF4-q6DEpEC_PEd-sirwE8X80TPVUdTsxvmm9CM6-BKz55muSwtNDrfJd17ZTAIIYqQ" alt="avatar">
-                    <h4 class="pt-2"> {{ user.get_full_name }}</h4>
+                    <img src="{% static 'booking/img/avatar.jpg' %}" alt="avatar">
+                    <h4 class="pt-2 letter-spacing"> {{ user.get_full_name }}</h4>
                 </div>
                 <div class="list-group">
                     <button type="button" class="list-group-item list-group-item-action"><i class="icon far fa-user-circle"></i>Profile</button>
@@ -34,12 +35,21 @@
         </div>
         <!-- Content Column -->
         <div class="col-lg-9 p-2">
-            <div class="acc-content p-4">
-                <h2>Section Heading</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, et temporibus, facere perferendis
-                    veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate
-                    dolores iure maxime ducimus fugit.</p>
+            <h5 class="letter-spacing pl-3">Bookings</h5>
+            {% for item in bookings %}
+            <div class="media booked-item">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">{{ item.listing.title }}</h5>
+                    <div class="text-muted"><i class="fas fa-map-marker-alt mr-2"></i>{{ item.listing.location }}</div>
+                    <div class="text-muted"><i class="far fa-calendar-alt mr-2"></i>{{ item.reservation_date }}</div>
+                    <div class="text-muted"><i class="far fa-user mr-2"></i>{{ item.quantity }} person(s)</div>
+                    <div class="bold-black">US$ {{ item.get_total }}</div>
+                    <div class="bold-green">Booking confirmed</div>
+                    <button class="btn btn-outline-success mt-2">View e-Voucher</button>
+                </div>
+                <img class="ml-3" src="{{ item.listing.image_url }}" alt="Generic placeholder image">
             </div>
+            {% endfor %}
         </div>
     </div>
     <!-- /.row -->
