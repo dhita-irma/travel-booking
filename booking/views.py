@@ -202,6 +202,9 @@ def bookings(request):
         for i in range(order.items.count()):
             bookings.append(order.items.all()[i])
 
+    # Reverse bookings (newest to oldest)
+    bookings.reverse()
+
     return render(request, "booking/bookings.html", {
         "bookings": bookings,
     })
