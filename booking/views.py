@@ -3,9 +3,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import JsonResponse, HttpResponse
 
 from django.db import IntegrityError
+from django.db.models import Q
+
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
@@ -193,6 +195,7 @@ def process_order(request):
 
 @login_required(login_url='/login/') 
 def bookings(request):
+    """Render Bookings page for logged in user, otherwise redirect to login page"""
 
     orders = Order.objects.filter(user=request.user, complete=True)
     bookings = []
@@ -212,9 +215,30 @@ def bookings(request):
 
 @login_required(login_url='/login/') 
 def profile(request):
+    """Render Profile page for logged in user, otherwise redirect to login page"""
+
     return render(request, "booking/profile.html", {
         "contact_form": forms.ContactInfoForm()
     })
+
+
+def get_listings_queryset(query=None):
+    """API that takes query inputs and return JSON data of listings that match the queries"""
+
+
+    queryset = []
+    queries = query.split(" ")
+    
+    for q in queries:
+        listings = Listing.objects.filter(
+            Q(title_icontains=q) |
+            Q(description_icontains=q)
+        ).distinct()
+
+    queryset = [listing for listing in listings]
+
+    # Return the UNIQUE queryset
+    return list(set(queryset))
 
 
 def register(request):
