@@ -25,6 +25,7 @@
                         <i class="fas fa-user-alt mr-1 text-gray"></i>{{ user.username }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                         <a class="dropdown-item" href="{% url 'bookings' %}">Bookings</a>
                         <a class="dropdown-item" href="#">Wishlist</a>
                         <div class="dropdown-divider"></div>

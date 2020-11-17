@@ -207,9 +207,15 @@ def bookings(request):
 
     return render(request, "booking/bookings.html", {
         "bookings": bookings,
-        "contact_form": forms.ContactInfoForm(),
     })
     
+
+@login_required(login_url='/login/') 
+def profile(request):
+    return render(request, "booking/profile.html", {
+        "contact_form": forms.ContactInfoForm()
+    })
+
 
 def register(request):
     if request.method == "POST":

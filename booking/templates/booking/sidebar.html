@@ -8,9 +8,15 @@
             <h4 class="pt-2 letter-spacing"> {{ user.get_full_name }}</h4>
         </div>
         <div class="list-group">
-            <button type="button" class="list-group-item list-group-item-action"><i class="icon far fa-user-circle"></i>Profile</button>
-            <button type="button" class="list-group-item list-group-item-action"><i class="icon far fa-calendar-check"></i>Bookings</button>
-            <button type="button" class="list-group-item list-group-item-action border-bottom"><i class="icon far fa-heart"></i>Wishlist</button>
+            <a href="{% url 'profile' %}" class="reset-anchor">
+                <button type="button" class="list-group-item list-group-item-action"><i class="icon far fa-user-circle"></i>Profile</button>
+            </a>
+            <a href="{% url 'bookings' %}" class="reset-anchor">
+                <button type="button" class="list-group-item list-group-item-action"><i class="icon far fa-calendar-check"></i>Bookings</button>
+            </a>
+            <a href="" class="reset-anchor">
+                <button type="button" class="list-group-item list-group-item-action border-bottom"><i class="icon far fa-heart"></i>Wishlist</button>
+            </a>
             <button type="button" class="list-group-item list-group-item-action"><i class="icon fas fa-sign-out-alt"></i>Log Out</button>
         </div>
         
