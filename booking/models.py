@@ -90,6 +90,15 @@ class Order(models.Model):
         total = sum([item.quantity for item in all_items])
         return total
 
+    @property
+    def pick_up(self):
+        pick_up = False
+        orderitems = self.items.all()
+        for i in orderitems:
+            if i.listing.pick_up == True:
+                pick_up = True
+        return pick_up
+
                                                                                                                                                                                                                                                                                                                                                                  
 class OrderItem(models.Model):
     listing = models.ForeignKey(Listing, on_delete=models.SET_NULL, blank=True, null=True)
@@ -139,3 +148,4 @@ class ContactInfo(models.Model):
 
     def __str__(self):
         return f"{self.title} {self.first_name} {self.last_name}"
+
