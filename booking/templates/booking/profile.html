@@ -1,0 +1,42 @@
+{% extends 'booking/layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<div class="container navbar-padding">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Account</h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Profile</li>
+    </ol>
+
+    <!-- Content Row -->
+    <div class="row">
+        {% block sidebar %}
+            {% include 'booking/sidebar.html' %}
+        {% endblock sidebar %}
+
+        <!-- Content Column -->
+        <div class="col-lg-9 p-2">
+            <div id="profile">
+                {% crispy contact_form %}
+                <div class="text-center">
+                    <button id="form-btn" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+    
+<script>
+
+</script>
+{% endblock %}

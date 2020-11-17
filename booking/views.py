@@ -207,6 +207,7 @@ def bookings(request):
 
     return render(request, "booking/bookings.html", {
         "bookings": bookings,
+        "contact_form": forms.ContactInfoForm(),
     })
     
 

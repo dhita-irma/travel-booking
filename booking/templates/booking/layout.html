@@ -54,7 +54,10 @@
     {% block headerText %} {% endblock  %}
     
     <!-- Page Content -->
-    {% block body %} {% endblock %}
+    {% block body %} 
+        {% block sidebar %}
+        {% endblock sidebar %}
+    {% endblock body %}
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">

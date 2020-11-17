@@ -1,0 +1,18 @@
+{% load static %}
+
+<!-- Sidebar Column -->
+<div class="col-lg-3 p-2">
+    <div class="acc-sidebar">
+        <div class="profile border-bottom">
+            <img src="{% static 'booking/img/avatar.jpg' %}" alt="avatar">
+            <h4 class="pt-2 letter-spacing"> {{ user.get_full_name }}</h4>
+        </div>
+        <div class="list-group">
+            <button type="button" class="list-group-item list-group-item-action"><i class="icon far fa-user-circle"></i>Profile</button>
+            <button type="button" class="list-group-item list-group-item-action"><i class="icon far fa-calendar-check"></i>Bookings</button>
+            <button type="button" class="list-group-item list-group-item-action border-bottom"><i class="icon far fa-heart"></i>Wishlist</button>
+            <button type="button" class="list-group-item list-group-item-action"><i class="icon fas fa-sign-out-alt"></i>Log Out</button>
+        </div>
+        
+    </div>
+</div>

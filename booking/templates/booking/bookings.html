@@ -1,5 +1,4 @@
 {% extends 'booking/layout.html' %}
-{% load static %}
 
 {% block body %}
 
@@ -12,49 +11,38 @@
         <li class="breadcrumb-item">
             <a href="index.html">Home</a>
         </li>
-        <li class="breadcrumb-item active">Account</li>
+        <li class="breadcrumb-item active">Bookings</li>
     </ol>
 
     <!-- Content Row -->
     <div class="row">
-        <!-- Sidebar Column -->
-        <div class="col-lg-3 p-2">
-            <div class="acc-sidebar">
-                <div class="profile border-bottom">
-                    <img src="{% static 'booking/img/avatar.jpg' %}" alt="avatar">
-                    <h4 class="pt-2 letter-spacing"> {{ user.get_full_name }}</h4>
-                </div>
-                <div class="list-group">
-                    <button type="button" class="list-group-item list-group-item-action"><i class="icon far fa-user-circle"></i>Profile</button>
-                    <button type="button" class="list-group-item list-group-item-action"><i class="icon far fa-calendar-check"></i>Bookings</button>
-                    <button type="button" class="list-group-item list-group-item-action border-bottom"><i class="icon far fa-heart"></i>Wishlist</button>
-                    <button type="button" class="list-group-item list-group-item-action"><i class="icon fas fa-sign-out-alt"></i>Log Out</button>
-                </div>
-                
-            </div>
-        </div>
+        {% block sidebar %}
+            {% include 'booking/sidebar.html' %}
+        {% endblock sidebar %}
+
         <!-- Content Column -->
         <div class="col-lg-9 p-2">
-            <h5 class="letter-spacing pl-3">Bookings</h5>
-            {% for item in bookings %}
-            <div class="media booked-item">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">{{ item.listing.title }}</h5>
-                    <div class="text-muted"><i class="fas fa-map-marker-alt mr-2"></i>{{ item.listing.location }}</div>
-                    <div class="text-muted"><i class="far fa-calendar-alt mr-2"></i>{{ item.formatted_date }}</div>
-                    <div class="text-muted"><i class="far fa-user mr-2"></i>{{ item.quantity }} person(s)</div>
-                    <div class="bold-black">US$ {{ item.get_total }}</div>
-                    <div class="bold-green">Booking confirmed</div>
-                    <button class="btn btn-outline-success mt-2">View e-Voucher</button>
+            <div id="bookings">
+                <h5 class="letter-spacing pl-3">Bookings</h5>
+                {% for item in bookings %}
+                <div class="media booked-item">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{ item.listing.title }}</h5>
+                        <div class="text-muted"><i class="fas fa-map-marker-alt mr-2"></i>{{ item.listing.location }}</div>
+                        <div class="text-muted"><i class="far fa-calendar-alt mr-2"></i>{{ item.formatted_date }}</div>
+                        <div class="text-muted"><i class="far fa-user mr-2"></i>{{ item.quantity }} person(s)</div>
+                        <div class="bold-black">US$ {{ item.get_total }}</div>
+                        <div class="bold-green">Booking confirmed</div>
+                        <button class="btn btn-outline-success mt-2">View e-Voucher</button>
+                    </div>
+                    <img class="ml-3" src="{{ item.listing.image_url }}" alt="Generic placeholder image">
                 </div>
-                <img class="ml-3" src="{{ item.listing.image_url }}" alt="Generic placeholder image">
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
     <!-- /.row -->
-
 </div>
 <!-- /.container -->
-    
+
 {% endblock %}
