@@ -57,11 +57,6 @@ def catalog_item(request, pk):
     })
 
 
-@staff_member_required
-def create_listing(request):
-    pass
-
-
 def filter(request, location):
     """API returning filtered listings based on location"""
     
@@ -222,23 +217,29 @@ def profile(request):
     })
 
 
-def get_listings_queryset(query=None):
+def search(request):
     """API that takes query inputs and return JSON data of listings that match the queries"""
 
+    if request.method == 'GET':
+        queries = request.GET.get('q')
 
-    queryset = []
-    queries = query.split(" ")
-    
-    for q in queries:
-        listings = Listing.objects.filter(
-            Q(title_icontains=q) |
-            Q(description_icontains=q)
-        ).distinct()
+        # Get a list of queries split by space
+        queries = queries.split(" ") 
+        queryset = []
+        
+        for q in queries:
+            listings = Listing.objects.filter(
+                Q(title__icontains=q) | Q(description__icontains=q)
+            ).distinct()
+            queryset += [listing for listing in listings]
 
-    queryset = [listing for listing in listings]
+        # Get a list of UNIQUE queryset
+        queryset = list(set(queryset))
 
-    # Return the UNIQUE queryset
-    return list(set(queryset))
+        # Return JSON representation of queryset
+        return JsonResponse([listing.serialize() for listing in queryset], safe=False)
+    else:
+        return JsonResponse({"error": "GET request required."}, status=400)
 
 
 def register(request):
