@@ -48,8 +48,6 @@ function filterDestination(destination) {
   
           } // for
         } // ifelse
-
-
       }); //.then
 
     } else {
@@ -57,4 +55,49 @@ function filterDestination(destination) {
       filteredCatalog.innerHTML= "";
       filteredCatalog.style.display = "none";
     }
+}
+
+
+function Search(event) {
+  const value = event.target.value;
+  console.log(`Searching for "${value}"...`)
+  
+  const resultSection = document.getElementById('result');
+
+  if (value.length >= 3) {
+
+    // Show search result section
+    resultSection.style.display = 'block';
+
+    // fetch search result 
+    fetch(`search?q=${value}`)
+    .then(response => response.json())
+    .then(listings => {
+      console.log(listings)
+      
+      resultSection.innerHTML = "";
+
+      // Display search results
+      for (var i = 0; i < listings.length; i++) {
+  
+        const a = document.createElement('a');
+        a.setAttribute('href', `/catalog/${listings[i].id}`);
+
+        a.className = 'list-group-item list-group-item-action d-flex align-items-center';
+        a.innerHTML = `
+        <div class="image-parent">
+          <img src="${listings[i].image_url}" class="img-fluid" alt="image">
+        </div>
+        <div class="pl-3">
+          ${listings[i].title}
+        </div>
+        `
+  
+        resultSection.appendChild(a);
+      }
+    });
+  } else {
+    resultSection.innerHTML = "";
+  }
+
 }

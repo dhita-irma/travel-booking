@@ -148,9 +148,29 @@ body {
   width: 100%;
 }
 
-/* input::-webkit-input-placeholder {
+.headerSearch input::-webkit-input-placeholder {
   color: white !important;
-} */
+}
+
+.headerSearch .form-control {
+  color: white;
+}
+
+/* remove blue outline on search bar */
+.headerSearch .form-control:focus {
+  outline:0px !important;
+  -webkit-appearance:none;
+  box-shadow: none !important;
+}
+
+.image-parent {
+  width: 100px;
+  object-fit: cover;
+}
+
+#result .list-group-item {
+  height: 85px;
+}
 
 
 /* With arrow tabs */
