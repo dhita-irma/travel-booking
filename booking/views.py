@@ -229,7 +229,7 @@ def search(request):
         
         for q in queries:
             listings = Listing.objects.filter(
-                Q(title__icontains=q) | Q(description__icontains=q)
+                Q(title__icontains=q) | Q(description__icontains=q) | Q(location__name__icontains=q)
             ).distinct()
             queryset += [listing for listing in listings]
 
