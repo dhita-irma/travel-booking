@@ -29,7 +29,7 @@ class Category(models.Model):
 
 class Listing(models.Model):
     title = models.CharField(max_length=50)
-    price = models.DecimalField(max_digits=12, decimal_places=0, default=99999)
+    price = models.DecimalField(max_digits=12, decimal_places=2)
     location = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name="listings")
     description = models.TextField()
     itinerary = models.TextField()
@@ -105,7 +105,7 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True, related_name="items")
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
-    reservation_date = models.DateField(null=True, blank=True)
+    reservation_date = models.DateField()
 
     @property
     def get_total(self):
