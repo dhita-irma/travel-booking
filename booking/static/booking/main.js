@@ -2,7 +2,7 @@ function filterCatalog(keywords) {
     var filteredCatalog = document.getElementById("filteredCatalog");
 
     // Fetch filtered listings
-    fetch(`search?q=${keywords}`)
+    fetch(`/search?q=${keywords}`)
     .then(response => response.json())
     .then(listings => {
       
@@ -13,6 +13,9 @@ function filterCatalog(keywords) {
       if (listings.length == 0) {
         filteredCatalog.innerHTML = 'No result';
       } else {
+        // Clear previous filtered catalog 
+        filteredCatalog.innerHTML = "";
+        
         for (var i = 0; i < listings.length; i++) {
           console.log(listings[i]);
 
@@ -34,6 +37,7 @@ function filterCatalog(keywords) {
                 </div>
             </div>
           `
+          
           filteredCatalog.appendChild(colDiv);
 
         } // for
