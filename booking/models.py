@@ -118,6 +118,16 @@ class OrderItem(models.Model):
     def __str__(self):
         return self.listing.title
 
+    # Return JSON representation of orderItem
+    def serialize(self):
+        return {
+            "id": self.id,
+            "listing": self.listing.serialize(),
+            "subtotal": self.get_total,
+            "quantity": self.quantity,
+            "reservation_date": self.reservation_date
+        }
+
 
 class ShippingAddress(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)

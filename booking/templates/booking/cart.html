@@ -24,23 +24,26 @@
             </div>
         </div>
     </section>
+
     <section class="py-5">
         <h2 class="h5 text-uppercase mb-4">Shopping cart</h2>
         <div class="row">
-            <div class="col-lg-8 mb-4 mb-lg-0">
+            <div class="col-lg-12 mb-4 mb-lg-0">
                 <!-- CART TABLE-->
                 <div class="table-responsive mb-4">
                     <table class="table">
-                        <thead class="bg-light">
+                        <thead class="bg-light text-center">
                             <tr>
                                 <th class="border-0" scope="col"> <strong
-                                        class="text-small text-uppercase">Product</strong></th>
+                                        class="text-small text-uppercase">Activity</strong></th>
+                                <th class="border-0" scope="col"> <strong
+                                        class="text-small text-uppercase">Date</strong></th>
                                 <th class="border-0" scope="col"> <strong
                                         class="text-small text-uppercase">Price</strong></th>
                                 <th class="border-0" scope="col"> <strong
-                                        class="text-small text-uppercase">Quantity</strong></th>
+                                        class="text-small text-uppercase">QTY</strong></th>
                                 <th class="border-0" scope="col"> <strong
-                                        class="text-small text-uppercase">Total</strong></th>
+                                        class="text-small text-uppercase">Subtotal</strong></th>
                                 <th class="border-0" scope="col"> </th>
                             </tr>
                         </thead>
@@ -51,23 +54,25 @@
                                     <div class="media align-items-center">
                                         <a class="reset-anchor d-block animsition-link" href="#"><img src="{{ item.listing.image_url }}" alt="..." width="70" /></a>
                                         <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="{% url 'catalog_item' item.listing.pk %}">{{ item.listing.title }}</a></strong></div>
-                                        <div class="media-body ml-3"><small>{{ item.formatted_date }}</small></div>
                                     </div>
                                 </th>
-                                <td class="align-middle border-0">
-                                    <p class="mb-0 small">{{ item.listing.price }}</p>
+                                <td class="align-middle border-0 text-center">
+                                    <p class="mb-0 ">{{ item.formatted_date }}</p>
                                 </td>
-                                <td class="align-middle border-0">
-                                    <div class="border d-flex align-items-center justify-content-between px-3"><span class="small text-uppercase text-gray headings-font-family">Quantity</span>
+                                <td class="align-middle border-0 text-center">
+                                    <p class="mb-0">${{ item.listing.price }}</p>
+                                </td>
+                                <td class="align-middle border-0 p-auto">
+                                    <div class="border d-flex align-items-center justify-content-between px-3">
                                         <div class="quantity">
-                                            <button data-id="{{ item.listing.id }}" data-action="remove" data-date="{{ item.formatted_date }}" class="update-cart dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                                            <input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" value="{{ item.quantity }}" />
-                                            <button data-id="{{ item.listing.id }}" data-action="add" data-date="{{ item.formatted_date }}" class="update-cart inc-btn p-0"><i class="fas fa-caret-right"></i></button>
+                                            <button data-item="{{ item.id }}" data-id="{{ item.listing.id }}" data-action="remove" data-date="{{ item.formatted_date }}" class="update-cart dec-btn p-0"><i class="fas fa-caret-left"></i></button>
+                                            <input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" value="{{ item.quantity }}"/>
+                                            <button data-item="{{ item.id }}" data-id="{{ item.listing.id }}" data-action="add" data-date="{{ item.formatted_date }}" class="update-cart inc-btn p-0"><i class="fas fa-caret-right"></i></button>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="align-middle border-0">
-                                    <p class="mb-0 small">{{ item.get_total }}</p>
+                                <td class="align-middle border-0 text-center">
+                                    <p id="subtotal-{{ item.id }}" class="mb-0">${{ item.get_total }}</p>
                                 </td>
                                 <td class="align-middle border-0"><a data-id="{{ item.listing.id }}" data-action="remove_all" data-date="{{ item.formatted_date }}" class="update-cart reset-anchor" href="#"><i class="fas fa-trash-alt small text-muted"></i></a></td>
                             </tr>
@@ -82,33 +87,11 @@
                             <a class="btn btn-link p-0 text-dark btn-sm" href="{% url 'catalog' %}"><i class="fas fa-long-arrow-alt-left mr-2"> </i>Continue shopping</a>
                         </div>
                         <div class="col-md-6 text-md-right">
-                            <a class="btn btn-outline-dark btn-sm" href="{% url 'checkout' %}">Procceed to checkout<i class="fas fa-long-arrow-alt-right ml-2"></i></a>
+                            <h3 id="cart-total">${{ order.get_cart_total }}</h3>
+                            <span>
+                                <a class="btn btn-outline-dark btn-sm" href="{% url 'checkout' %}">Checkout<i class="fas fa-long-arrow-alt-right ml-2"></i></a>
+                            </span>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ORDER TOTAL-->
-            <div class="col-lg-4">
-                <div class="card border-0 rounded-0 p-lg-4 bg-light">
-                    <div class="card-body">
-                        <h5 class="text-uppercase mb-4">Cart total</h5>
-                        <ul class="list-unstyled mb-0">
-                            <li class="d-flex align-items-center justify-content-between"><strong
-                                    class="text-uppercase small font-weight-bold">Subtotal</strong><span
-                                    class="text-muted small">{{ order.get_cart_total }}</span></li>
-                            <li class="border-bottom my-2"></li>
-                            <li class="d-flex align-items-center justify-content-between mb-4"><strong
-                                    class="text-uppercase small font-weight-bold">Total</strong><span>Rp {{ order.get_cart_total }}</span></li>
-                            <li>
-                                <form action="#">
-                                    <div class="form-group mb-0">
-                                        <input class="form-control" type="text" placeholder="Enter your coupon">
-                                        <button class="btn btn-dark btn-sm btn-block" type="submit"> <i
-                                                class="fas fa-gift mr-2"></i>Apply coupon</button>
-                                    </div>
-                                </form>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

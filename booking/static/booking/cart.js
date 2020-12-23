@@ -5,6 +5,7 @@ for (i = 0; i < updateBtns.length; i++) {
         const id = this.dataset.id
         const action = this.dataset.action
         const date = this.dataset.date
+        const itemId = this.dataset.item
     
         console.log('listingID:', id, 'Action:', action)
         console.log(date)
@@ -13,7 +14,19 @@ for (i = 0; i < updateBtns.length; i++) {
         if (user === 'AnonymousUser'){
             console.log('Not logged in.')
         } else {
+
+            // Update order 
             updateUserOrder(id, action, date)
+
+            .then(data => {
+                // Update subtotal
+                var subtotal = document.getElementById(`subtotal-${itemId}`)
+                subtotal.innerHTML = `$${data.orderItem.subtotal}`
+
+                // Update cart total
+                var cartTotal = document.getElementById('cart-total')
+                cartTotal.innerHTML = `$${data.cart_total}`
+            })
         }
     })
 }
@@ -23,7 +36,7 @@ function updateUserOrder(id, action, date) {
 
     const url = '/update_cart/'
 
-    fetch(url, {
+    return fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -34,8 +47,10 @@ function updateUserOrder(id, action, date) {
     .then(response => response.json())
     .then(data => {
         console.log(data)
+        return data
     });
 }
+
 
 function submitFormData(total){
     console.log('Payment button clicked.')

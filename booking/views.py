@@ -93,6 +93,7 @@ def update_cart(request):
     user = request.user
     listing = Listing.objects.get(id=listing_id)
     reservation_date = datetime.strptime(date, '%b %d, %Y').date()
+
     order, created = Order.objects.get_or_create(user=user, complete=False)
     orderItem, created = OrderItem.objects.get_or_create(order=order, listing=listing, reservation_date=reservation_date)
 
@@ -109,7 +110,14 @@ def update_cart(request):
     if orderItem.quantity <= 0:
         orderItem.delete()
 
-    return JsonResponse({"message": "Cart updated successfully."}, status=200)
+    print(orderItem)
+    print(orderItem.serialize())
+
+    return JsonResponse({
+        "orderItem": orderItem.serialize(), 
+        "cart_total": order.get_cart_total
+        }, 
+        status=200)
 
 
 def cart_view(request):
@@ -137,7 +145,7 @@ def checkout(request):
         order, created = Order.objects.get_or_create(user=user, complete=False)
         items = order.items.all()
     else:
-        items = []
+        items = [] 
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'pick_up': False}
 
     return render(request, "booking/checkout.html", {
