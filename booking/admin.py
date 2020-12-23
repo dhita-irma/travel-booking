@@ -20,10 +20,10 @@ class ContactInfoAdmin(admin.ModelAdmin):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ("__str__", "user", "complete")
+    list_display = ("id", "__str__", "user", "complete")
 
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ("__str__", "order", "reservation_date", "quantity")
+    list_display = ("id", "__str__", "order", "reservation_date", "quantity")
 
 
 admin.site.register(User, UserAdmin)

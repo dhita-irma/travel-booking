@@ -415,6 +415,33 @@ input.form-control::placeholder {
   border-right: 1px solid grey;
 }
 
+/*
+*
+* ==========================================
+*                  CART
+* ==========================================
+*
+*/
+.quantity {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  font-family: inherit;
+}
+
+.quantity input {
+  width: 2rem;
+  text-align: center;
+}
+
+.quantity button {
+  background: none;
+  border: none;
+  width: 1rem;
+  outline: none;
+}
+
 /* Other */
 
 .reset-anchor {
