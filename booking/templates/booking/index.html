@@ -32,8 +32,8 @@
 {% block body %}
 <div class="container">
     
-    <!-- Advantages -->
-    <div class="row mt-3">
+    <!-- Website Advantages -->
+    <div class="row feature-container mt-3">
         <div class="feature col-lg-4">
             <img class="icon" src="{% static 'booking/img/globe.png' %}" alt="globe">
             <div class="desc mt-2">
@@ -57,10 +57,18 @@
         </div>
     </div>
 
-    <!-- Popular Listings -->
-    <div class="row">
-        <div class="col-lg-12 pb-3">
-            <h2>Popular</h2>
+    <!-- Top Destinations -->
+    <div class="row mt-3">
+        <div class="section-padding col-lg-12 pb-3">
+            <h2 class="title">Incredible Destinations</h2>
+        </div>
+        <!-- TODO: DESTINATIONS SLIDER  -->
+    </div>
+
+    <!-- Top Things To Do -->
+    <div class="row mt-3">
+        <div class="section-padding col-lg-12 pb-3">
+            <h2 class="title">Top Things To Do</h2>
         </div>
         {% for listing in listings %}
         <div class="col-lg-3 listing {{ listing.location }} {{ listing.get_categories }} card-padding">
@@ -85,31 +93,38 @@
     </div>
     <!-- /.row -->
 
-    <!-- Features Section -->
+    <!-- Featured Activity -->
     <div class="row">
-        <div class="col-lg-6">
-            <h2>Modern Business Features</h2>
-            <p>The Modern Business template by Start Bootstrap includes:</p>
+        <div class="section-padding col-lg-6">
+            <h2 class="title">Featured Activity</h2>
+            <h3>One Day Nusa Penida Trip</h3>
+            <p>Embark on a Nusa Penida day trip from Bali and enjoy a full day of adventure and breathtaking views.</p>
             <ul>
-                <li>
-                    <strong>Bootstrap v4</strong>
-                </li>
-                <li>jQuery</li>
-                <li>Font Awesome</li>
-                <li>Working contact form with validation</li>
-                <li>Unstyled page elements for easy customization</li>
+                <li>Make a stop at <strong>Kelingking Beach</strong> and have your photo taken with the famed T-Rex shaped cliffs as your backdrop</li>
+                <li>Get a chance to swim the crystal clear emerald waters of the island’s natural infinity pool, <strong>Angel Billabong</strong></li>
+                <li>Travel to the East and South side of the island to visit the famous <strong>Diamond and Tembeling Beach</strong></li>
             </ul>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id
-                reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum
-                ducimus unde.</p>
+            <div class="text-center mt-4">
+                <a href="{% url 'catalog_item' 1 %}">
+                    <button class="btn btn-outline-primary">View Details</button>
+                </a>
+            </div>
         </div>
-        <div class="col-lg-6">
-            <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+        <div class="section-padding col-lg-6">
+            <div class="hover hover-2 text-white rounded"><img
+                    src="http://dmgupcwbwy0wl.cloudfront.net/system/images/000/198/469/30ab9203cecf921b742fcf373bcc7423/original/Kelingking-Secret-Point-at-Penida-Island.jpg?1550644703" alt="">
+                <div class="hover-overlay"></div>
+                <div class="hover-2-content px-5 py-4">
+                    <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Nusa
+                        </span>Penida</h3>
+                    <p class="hover-2-description text-uppercase mb-0">The famous T-Rex shaped cliffscape at Kelingking Beach</p>
+                </div>
+            </div>
         </div>
     </div>
     <!-- /.row -->
     
-    <hr>
+    <hr class="section-padding">
 
     <!-- Call to Action Section -->
     <div class="row mb-4">
