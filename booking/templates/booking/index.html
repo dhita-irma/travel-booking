@@ -1,4 +1,5 @@
 {% extends 'booking/layout.html' %}
+{% load static %}
 
 {% block header %}
     {% include 'booking/header.html' %}    
@@ -30,7 +31,32 @@
 
 {% block body %}
 <div class="container">
-        
+    
+    <!-- Advantages -->
+    <div class="row mt-3">
+        <div class="feature col-lg-4">
+            <img class="icon" src="{% static 'booking/img/globe.png' %}" alt="globe">
+            <div class="desc mt-2">
+                <h5>A World of Possibilities</h5>
+                <p>Discover activities across Indonesia</p>
+            </div>
+        </div>
+        <div class="feature col-lg-4">
+            <img class="icon" src="{% static 'booking/img/badge.png' %}" alt="globe">
+            <div class="desc mt-2">
+                <h5>Best Price Guaranteed</h5>
+                <p>On 1000+ activities and more</p>
+            </div>
+        </div>
+        <div class="feature col-lg-4">
+            <img class="icon" src="{% static 'booking/img/calendar.png' %}" alt="globe">
+            <div class="desc mt-2">
+                <h5>Seamless Booking</h5>
+                <p>Easy and secure reservation process</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Popular Listings -->
     <div class="row">
         <div class="col-lg-12 pb-3">

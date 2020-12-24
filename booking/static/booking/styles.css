@@ -214,6 +214,21 @@ footer {
   margin-top: auto;
 }
 
+
+/* FEATURES */
+.feature {
+  display: flex;
+}
+
+.feature .icon {
+  width: 64px;
+  height: 64px;
+}
+
+.feature .desc p {
+  color: #888;
+}
+
 /*
 * CARD
 */
