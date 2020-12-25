@@ -9,6 +9,7 @@ class User(AbstractUser):
 
 class Destination(models.Model):
     name = models.CharField(max_length=30)
+    image_url = models.URLField(blank=True)
 
     class Meta:
         ordering = ['name']

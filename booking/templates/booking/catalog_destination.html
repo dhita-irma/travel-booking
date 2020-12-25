@@ -1,0 +1,156 @@
+{% extends 'booking/layout.html' %}
+{% load static %}
+
+{% block header %}
+<header class="navbar-padding">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active"
+                style="background-image: url('{{ destination.image_url }}')">
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+
+{% block headerText %}
+<div class="header-wrapper">
+    <div class="container">
+        <div class="header-title">{{ destination.name }}</div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <div class="border-bottom">
+        <h1 class="mt-4 mb-3">Indonesia</h1>
+    </div>
+
+    <div class="row">
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-3 border-right">
+            <div class="pt-3">
+                
+                <!-- Destinations -->
+                <div class="border-bottom pb-3">
+                    <h5 class="letter-spacing">Destinations</h5>
+                    <div class="pl-3">
+                        {% for destination in destinations %}
+                        <div class="form-check">
+                            <input value="{{ destination }}" type="checkbox" class="form-check-input">
+                            <label class="form-check-label">{{ destination }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div class="py-3">
+                    <h5 class="letter-spacing">Categories</h5>
+                    <div class="pl-3">
+                        {% for category in categories %}
+                        <div class="form-check">
+                            <input value="{{ category }}" type="checkbox" class="form-check-input">
+                            <label class="form-check-label">{{ category }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Catalog Column -->
+        <div class="col-md-9" style="padding-bottom: 100px;">
+
+            <!-- Catalog -->
+            <div id="allCatalog" class="row pt-3">
+                {% for listing in listings %}
+                <div class="col-lg-4 listing {{ listing.location }} {{ listing.get_categories }} card-padding">
+                    <div class="card h-100 listing-card">
+                        <img class="card-img-top" src="{{ listing.image_url }}" alt="">
+                        <div class="card-body p-2">
+                            <a href="{% url 'catalog_item' listing.id %}" class="stretched-link">
+                                <h6 class="card-title">{{ listing.title }}</h6>
+                            </a>
+                            <p class="card-subtitle"> <i class="fas fa-map-marker-alt"></i>  {{ listing.location }}</p>
+                            <p class="card-text card-desc"></p>
+                        </div>
+                        <div class="card-footer p-2">
+                            USD {{ listing.price }}<span>/pax</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div id="filteredCatalog" class="row pt-3" style="display: none;">
+            </div>
+
+            <!-- Pagination -->
+            <ul class="pagination justify-content-center mb-4">
+                <li class="page-item">
+                    <a class="page-link" href="#">&larr; Older</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">Newer &rarr;</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<script>
+
+    var allCatalogSection = document.getElementById("allCatalog");
+    var filteredCatalogSection = document.getElementById("filteredCatalog");
+
+    var array = []
+    var checkboxes = document.querySelectorAll("input[type='checkbox']");
+    checkboxes.forEach(element => {
+        element.addEventListener('click', () => {
+            if (element.checked) {
+                array.push(element.value);
+            } else {
+                const index = array.indexOf(element.value);
+                array.splice(index, 1);
+            }
+            
+            if (array.length >= 1) {
+
+                // Show filtered section
+                allCatalogSection.style.display = "none";
+                filteredCatalogSection.style.display = "flex";
+                
+                // Convert array to a string separated by space
+                var keywords = ""
+                array.forEach(item => {
+                    keywords = keywords + item + " "
+                });
+                console.log('Keywords are ', keywords);
+                
+                // Filter catalog by keywords 
+                filterCatalog(keywords);
+            } else {
+
+                // Show all catalog
+                allCatalogSection.style.display = "flex";
+                filteredCatalogSection.style.display = "none";
+            }
+
+
+        });
+    });
+
+</script>
+{% endblock %}

@@ -41,9 +41,23 @@ def catalog(request):
         "destinations": destinations
     })
 
+def catalog_destination(request, destination):
+    """Render page displaying listings in each destination"""
+
+    destination = Destination.objects.get(name__iexact=destination)
+    listings = destination.listings.all()
+
+    for listing in listings:
+        print(listing)
+
+    return render(request, "booking/catalog_destination.html", {
+        "destination": destination,
+        "listings": listings
+    })
+
 
 def catalog_item(request, pk):
-    """Render page displaying all listings"""
+    """Render page displaying listing item"""
 
     # Query for requested listing
     try:
@@ -51,9 +65,14 @@ def catalog_item(request, pk):
     except Listing.DoesNotExist:
         return JsonResponse({"error": f"Listing with pk {pk} not found."}, status=404)
 
+    # Query for relation listings in the same location
+    location_id = listing.location.id
+    related = Listing.objects.filter(location=location_id).exclude(pk=pk)
+
     # Render detail page
     return render(request, "booking/catalog_item.html", {
-        "listing": listing
+        "listing": listing,
+        "related": related[:4]
     })
 
 

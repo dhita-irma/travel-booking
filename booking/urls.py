@@ -10,6 +10,7 @@ urlpatterns = [
 
     path("catalog/", views.catalog, name="catalog"),
     path("catalog/<int:pk>", views.catalog_item, name="catalog_item"),
+    path("catalog/<str:destination>", views.catalog_destination, name="catalog_destination"),
 
     path("cart/", views.cart_view, name="cart"),
     path("checkout/", views.checkout, name="checkout"),
