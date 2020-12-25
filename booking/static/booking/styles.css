@@ -373,6 +373,21 @@ footer {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
   }
 
+  /*
+*
+* ==========================================
+*               ALL CATALOG
+* ==========================================
+*
+*/
+
+@media (min-width: 992px) {
+  #filteredCatalog {
+    padding-bottom: 300px;
+  }
+}
+
+
 /*
 *
 * ==========================================
