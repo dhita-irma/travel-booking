@@ -235,9 +235,9 @@ footer {
 }
 
 /* SECTION HEADER */
-.section-padding .title {
+.title {
   font-weight: 700;
-  height: 34px;
+  /* height: 34px; */
 }
 
 @media (min-width: 992px) {
@@ -371,6 +371,29 @@ footer {
 
 .hover-2:hover .hover-overlay {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+  }
+
+/*
+*
+* ==========================================
+*               CATALOG ITEM
+* ==========================================
+*
+*/
+
+/* ITEM PICTURE */
+.item-picture .carousel-item {
+  border-radius: 3px;
+}
+
+@media (min-width: 992px) {
+  .item-picture {
+    margin-top: 100px;
+  }
+
+  .item-picture .carousel-item {
+    height: 65vh;
+  }
 }
 
 /*
@@ -404,9 +427,14 @@ footer {
   color: #aaa;
 }
 
-/* 
-* Datepicker 
-*/
+/* BOOKING SIDEBAR */
+@media (min-width: 992px) {
+  .booking-sidebar {
+    padding-top: 175px;
+  }
+}
+
+/* DATEPICKER */
 
 .datepicker td,
 .datepicker th {
@@ -419,30 +447,58 @@ footer {
   margin-bottom: 3rem;
 }
 
-/* .input-group {
-  border-radius: 30rem;
-}
-
-input.form-control {
-  border-radius: 30rem 0 0 30rem;
-  border: none;
-}
-
-input.form-control:focus {
-  box-shadow: none;
-}
-
-input.form-control::placeholder {
-  font-style: italic;
-}
-
-.input-group-text {
-  border-radius: 0 30rem 30rem 0;
-  border: none;
-} */
-
 .datepicker-dropdown {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* RELATED LISTINGS */
+
+@media (min-width: 992px) {
+  .related-img{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .related-listings .hover {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 105px;
+  }
+}
+
+/*
+*
+* ==========================================
+*                PROFILE
+* ==========================================
+*
+*/
+.profile {
+  text-align: center;
+  padding: 50px 15px 50px 15px;
+}
+
+.profile img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Menu */
+.acc-sidebar .list-group-item {
+  border: none;
+}
+
+.acc-sidebar .list-group-item:focus {
+  outline: none !important;
+  background-color: #e9ecef;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 15px;
 }
 
 /* Account Sidebar */
@@ -478,34 +534,6 @@ input.form-control::placeholder {
   font-weight: 600;
   font-size: 17px;
   color: green;
-}
-
-/* Profile */
-.profile {
-  text-align: center;
-  padding: 50px 15px 50px 15px;
-}
-
-.profile img {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
-
-/* Menu */
-.acc-sidebar .list-group-item {
-  border: none;
-}
-
-.acc-sidebar .list-group-item:focus {
-  outline: none !important;
-  background-color: #e9ecef;
-}
-
-.icon {
-  font-size: 20px;
-  margin-right: 15px;
 }
 
 /* Borders */

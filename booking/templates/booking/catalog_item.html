@@ -2,29 +2,23 @@
 
 
 {% block body %}
-<div class="container navbar-padding">
+<div class="container">
 
-    <!-- Pictures  -->
-    <div class="row">
+    <!-- Item Picture  -->
+    <div class="row item-picture">
         <div class="col-12">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active"
                         style="background-image: url('{{ listing.image_url }}')">
                     </div>
-                    <!-- <div class="carousel-item"
-                        style="background-image: url('https://images.unsplash.com/photo-1603463262427-86b6e34fb077?ixlib=rb-1.2.1&auto=format&fit=crop&w=1490&q=80')">
-                    </div> -->
-                    <!-- <div class="carousel-item"
-                        style="background-image: url('https://images.unsplash.com/photo-1518950957614-73ac0a001408?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1481&q=80')">
-                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row" >
-        <div class="col-lg-9">
+        <div class="col-lg-8">
             <!-- Breadcrumbs -->
             <div class="mt-2">
                 <ol class="breadcrumb" style="background-color: transparent;">
@@ -39,7 +33,7 @@
             </div>
 
             <!-- Title -->
-            <h1 class="mb-3">{{ listing.title }}</h1>
+            <h1 class="title mb-3">{{ listing.title }}</h1>
 
             <!-- Tabs -->
             <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
@@ -59,22 +53,13 @@
             <div id="myTab2Content" class="tab-content">
                 <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
                     <p class="leade font-italic">{{ listing.description }}</p>
-                    <p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
                 <div id="profile2" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
                     <p class="leade font-italic">{{ listing.itinerary }}</p>
-                    <p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
                 <div id="contact2" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
                     <p class="leade font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        <p class="leade font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                         laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                         irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
@@ -89,19 +74,19 @@
         </div>
         <!-- end of col -->
 
-        <div class="col-lg-3">
-            <div class="card mt-4">
+        <div class="booking-sidebar col-lg-4">
+            <div class="card" >
                 <div class="card-body">
-                    <h4>Price: Rp {{ listing.price }}</h4>
+                    <h3 class="title text-center pb-3">USD {{ listing.price }}</h3>
                     <!-- Date Picker Input -->
                     <div class="form-group mb-4">
                         <div class="datepicker date input-group p-0 shadow-sm">
-                            <input type="text" placeholder="Choose a reservation date" class="form-control py-4 px-4" id="reservationDate">
+                            <input type="text" placeholder="Choose a reservation date" class="form-control p-4" id="reservationDate" autocomplete="off">
                             <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-clock-o"></i></span></div>
                         </div>
-                    </div><!-- DEnd ate Picker Input -->
+                    </div><!-- End of Date Picker Input -->
                     
-                    <!-- For Demo Purpose -->
+                    <!-- Date Confirmation -->
                     <div class="text-center">
                         <p class="font-italic text-muted mb-0">Your reservation day is</p>
                         <h4 id="pickedDate" class="font-weight-bold text-uppercase mb-3">Not set yet</h4>
@@ -115,33 +100,21 @@
     <!--  end of row -->
 
     <!-- Related Projects Row -->
-    <h3 class="my-4">Related Items</h3>
+    <h3 class="my-4">You might also like</h3>
 
-    <div class="row">
-
+    <div class="row related-listings">
+        {% for listing in related %}
         <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+            <a href="{% url 'catalog_item' listing.id %}">
+                <div class="hover hover-2 text-white rounded"><img class="related-img img-fluid" src="{{ listing.image_url }}">
+                    <div class="hover-overlay"></div>
+                    <div class="hover-2-content px-5 py-4">
+                        <p class="hover-2-description text-uppercase mb-0">{{ listing.title }}</p>
+                    </div>
+                </div>
             </a>
         </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
-        </div>
+        {% endfor %}
 
     </div>
     <!-- /.row -->
