@@ -44,11 +44,9 @@ def catalog(request):
 def catalog_destination(request, destination):
     """Render page displaying listings in each destination"""
 
+    # Query listings based on destination
     destination = Destination.objects.get(name__iexact=destination)
     listings = destination.listings.all()
-
-    for listing in listings:
-        print(listing)
 
     return render(request, "booking/catalog_destination.html", {
         "destination": destination,
