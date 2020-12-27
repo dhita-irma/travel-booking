@@ -131,18 +131,17 @@
     </div>
     <div class="row mt-3">
         {% for listing in listings %}
-        <div class="col-lg-3 listing {{ listing.location }} {{ listing.get_categories }} card-padding">
-            <div class="card h-100 listing-card">
-                <img class="card-img-top" src="{{ listing.image_url }}" alt="">
-                <div class="card-body p-2">
-                    <a href="{% url 'catalog_item' listing.id %}" class="stretched-link">
-                        <h6 class="card-title">{{ listing.title }}</h6>
-                    </a>
-                    <p class="card-subtitle"> <i class="fas fa-map-marker-alt"></i> {{ listing.location }}</p>
-                    <p class="card-text card-desc"></p>
+        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
+            <div class="listing-item card bg-white rounded">
+                <img src="{{ listing.image_url }}" class="img-fluid card-img-top">
+                <div class="card-body px-4 pt-4 pb-1">
+                    <h6> <a href="{% url 'catalog_item' listing.id %}" class="text-dark stretched-link">{{ listing.title }}</a></h6>
                 </div>
-                <div class="card-footer p-2">
-                    USD {{ listing.price }}<span>/pax</span>
+                <div class="card-footer">
+                     <div class="d-flex align-items-center justify-content-between rounded-pill bg-light pl-2">
+                        <p class="location lead mb-0"><i class="icon fas fa-map-marker-alt"></i><span> {{ listing.location }}</span></p>
+                        <div class="badge badge-danger px-3 py-2 rounded-pill font-weight-normal font-weight-bold">${{ listing.price }}</div>
+                    </div>
                 </div>
             </div>
         </div>

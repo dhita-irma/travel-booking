@@ -258,37 +258,50 @@ footer {
 /*
 * CARD
 */
-.listing-card {
-  border: none;
-  padding: 0px;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+
+
+.listing-item {
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
 }
 
-.listing-card:hover {
+.listing-item:hover {
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
 }
 
-.listing a {
+.listing-item a {
   color: black;
   text-decoration: none;
 }
 
-.card-padding {
-  padding-left: 15px;
-  padding-right: 0px;
-  padding-bottom: 25px;
+.listing-item .card-footer {
+  border: none;
+  background-color: white;
 }
 
 .card-img-top {
   border-top-left-radius: calc(0 - 1px);
   border-top-right-radius: calc(0 - 1px);
   width: 100%;
-  height: 20vw;
+  height: 150px;
   object-fit: cover;
   border: none;
 }
 
-.listing-card .card-subtitle {
+@media (max-width: 992px) {
+  .card-img-top {
+    height: 40vh;
+  }
+}
+
+.card-footer .lead,
+.card-footer .icon {
+  font-size: 15px;
+  margin: 0px;
+}
+
+
+
+/* .listing-card .card-subtitle {
   color: #aaa;
   font-size: small;
   font-weight: 600;
@@ -299,20 +312,9 @@ footer {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-}
+} */
 
-.listing-card .card-footer {
-  border: none;
-  background-color: white;
-  font-weight: 600;
-  font-size: 20px;
-  text-align: right;
-}
 
-.card-footer span {
-  font-size: 15px;
-  color: grey;
-}
 
 /* IMAGE HOVER */
 .hover {
@@ -634,31 +636,7 @@ footer {
       MEDIA QUERY
 ==================== */
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-  .card-img-top {
-    height: 19vw;
-  }
-}
 
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  .card-img-top {
-    height: 16vw;
-  }
-}
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-  .card-img-top {
-    height: 20vh;
-  }
-}
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1500px) {
-  .card-img-top {
-    height: 15vh;
-  }
-}
 
 @media (max-width: 991.98px) {
   /* Change navbar styling on small viewports */
