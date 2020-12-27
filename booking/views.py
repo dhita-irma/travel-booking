@@ -127,9 +127,6 @@ def update_cart(request):
     if orderItem.quantity <= 0:
         orderItem.delete()
 
-    print(orderItem)
-    print(orderItem.serialize())
-
     return JsonResponse({
         "orderItem": orderItem.serialize(), 
         "cart_total": order.get_cart_total
@@ -161,6 +158,7 @@ def checkout(request):
         user = request.user
         order, created = Order.objects.get_or_create(user=user, complete=False)
         items = order.items.all()
+
     else:
         items = [] 
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'pick_up': False}
@@ -168,7 +166,7 @@ def checkout(request):
     return render(request, "booking/checkout.html", {
         "items": items,
         "order": order,
-        "contact_form": forms.ContactInfoForm(),
+        "contact_form": forms.ContactInfoForm(user.contact_info.all().last())
     })
 
 
@@ -208,8 +206,6 @@ def process_order(request):
     )
     contact.save()
 
-    print("Contact details are saved.")
-
     return JsonResponse({"message": "Wohoo! Transaction is successful!"}, status=200)
 
 
@@ -237,10 +233,35 @@ def bookings(request):
 def profile(request):
     """Render Profile page for logged in user, otherwise redirect to login page"""
 
-    return render(request, "booking/profile.html", {
-        "contact_form": forms.ContactInfoForm()
-    })
+    user = request.user 
 
+    if request.method == 'GET':
+        return render(request, "booking/profile.html", {
+            "contact_form": forms.ContactInfoForm(user.contact_info.all().last())
+        })
+    elif request.method == 'POST':
+
+        # Create form instance and populate it with user data
+        form = forms.ContactInfoForm(request.POST)
+
+        # Check if form is valid 
+        if form.is_valid():
+            # Save contact details to database
+            contact, created = ContactInfo.objects.get_or_create(
+                user= request.user,
+                title = form.cleaned_data['title'],
+                first_name = form.cleaned_data['first_name'],
+                last_name = form.cleaned_data['last_name'],
+                country = form.cleaned_data['country'],
+                phone_number = form.cleaned_data['phone_number'],
+            )
+            contact.save()
+
+            # Redirect back to profile page
+            return render(request, "booking/profile.html", {
+            "contact_form": forms.ContactInfoForm(user.contact_info.all().last())
+        })
+    
 
 def search(request):
     """API that takes query inputs and return JSON data of listings that match the queries"""
