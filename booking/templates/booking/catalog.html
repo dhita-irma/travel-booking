@@ -72,23 +72,9 @@
 
             <!-- Catalog -->
             <div id="allCatalog" class="row pt-3">
-                {% for listing in listings %}
-                <div class="col-lg-4 listing {{ listing.location }} {{ listing.get_categories }} card-padding">
-                    <div class="card h-100 listing-card">
-                        <img class="card-img-top" src="{{ listing.image_url }}" alt="">
-                        <div class="card-body p-2">
-                            <a href="{% url 'catalog_item' listing.id %}" class="stretched-link">
-                                <h6 class="card-title">{{ listing.title }}</h6>
-                            </a>
-                            <p class="card-subtitle"> <i class="fas fa-map-marker-alt"></i>  {{ listing.location }}</p>
-                            <p class="card-text card-desc"></p>
-                        </div>
-                        <div class="card-footer p-2">
-                            USD {{ listing.price }}<span>/pax</span>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+                {% block listing_card %}
+                    {% include 'booking/listing_card_3col.html' %}
+                {% endblock listing_card %}
             </div>
 
             <div id="filteredCatalog" class="row pt-3" style="display: none;"></div>

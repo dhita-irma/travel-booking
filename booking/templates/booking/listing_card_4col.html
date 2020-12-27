@@ -1,0 +1,16 @@
+{% for listing in listings %}
+<div class="col-lg-3 col-md-6 mb-4 d-flex align-items-stretch">
+    <div class="listing-item card bg-white rounded">
+        <img src="{{ listing.image_url }}" class="img-fluid card-img-top">
+        <div class="card-body px-4 pt-4 pb-1">
+            <h6> <a href="{% url 'catalog_item' listing.id %}" class="text-dark stretched-link">{{ listing.title }}</a></h6>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light pl-2">
+                <p class="location lead mb-0"><i class="icon fas fa-map-marker-alt"></i><span> {{ listing.location }}</span></p>
+                <div class="badge badge-danger px-3 py-2 rounded-pill font-weight-normal font-weight-bold">${{ listing.price }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

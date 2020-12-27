@@ -20,20 +20,20 @@ function filterCatalog(keywords) {
           console.log(listings[i]);
 
           const colDiv = document.createElement('div');
-          colDiv.className = `col-lg-4 listing card-padding ${listings[i].location} ${listings[i].category}`;
+          colDiv.className = `col-lg-4 col-md-6 mb-4 d-flex align-items-stretch`;
 
           colDiv.innerHTML = `
-            <div class="card h-100 listing-card">
-                <img class="card-img-top" src="${listings[i].image_url}" alt="">
-                <div class="card-body p-2">
-                    <a href="/catalog/${listings[i].id}" class="stretched-link">
-                        <h6 class="card-title">${listings[i].title}</h6>
-                    </a>
-                    <p class="card-subtitle"> <i class="fas fa-map-marker-alt"></i>  ${listings[i].location}</p>
-                    <p class="card-text card-desc"></p>
-                </div>
-                <div class="card-footer p-2">
-                    US$ ${listings[i].price}<span>/pax</span>
+          <div class="listing-item card bg-white rounded">
+              <img src="${listings[i].image_url}" class="img-fluid card-img-top">
+              <div class="card-body px-4 pt-4 pb-1">
+                  <h6> <a href="{% url 'catalog_item' ${listings[i].id} %}" class="text-dark stretched-link">${listings[i].title}</a></h6>
+              </div>
+              <div class="card-footer">
+                  <div class="d-flex align-items-center justify-content-between rounded-pill bg-light pl-2">
+                      <p class="location lead mb-0"><i class="icon fas fa-map-marker-alt"></i><span> ${listings[i].location}</span></p>
+                      <div class="badge badge-danger px-3 py-2 rounded-pill font-weight-normal font-weight-bold">$${listings[i].price}</div>
+                  </div>
+                    </div>
                 </div>
             </div>
           `
