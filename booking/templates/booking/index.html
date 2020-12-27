@@ -30,10 +30,10 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container homepage-margin">
     
     <!-- Website Advantages -->
-    <div class="row feature-container mt-3">
+    <div class="row feature-container">
         <div class="feature col-lg-4">
             <img class="icon" src="{% static 'booking/img/globe.png' %}" alt="globe">
             <div class="desc mt-2">
@@ -81,15 +81,14 @@
                 <div class="col-10">
                     <!--Start carousel-->
                     <div id="carouselExampleIndicators-v2" class="carousel slide destinations-carousel" data-ride="carousel">
-        
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="row">
                                     {% for destination in destinations_1 %}
                                         <div style="background-image:url('{{ destination.image_url }}');"
-                                            class="col-12 col-md d-flex align-items-center justify-content-center">
+                                            class="col-12 col-md d-flex align-items-center justify-content-center text-white-shadow hover-fx">
                                             <a href="{% url 'catalog_destination' destination.name %}" class="stretched-link reset-anchor">
-                                                <h3 class="text-white">{{ destination.name }}</h3>
+                                                <h3>{{ destination.name }}</h3>
                                             </a>
                                         </div>
                                     {% endfor %}
@@ -99,9 +98,9 @@
                                 <div class="row">
                                     {% for destination in destinations_2 %}
                                     <div style="background-image:url('{{ destination.image_url }}');"
-                                        class="col-12 col-md d-flex align-items-center justify-content-center">
+                                        class="col-12 col-md d-flex align-items-center justify-content-center text-white-shadow hover-fx">
                                         <a href="{% url 'catalog_destination' destination.name %}" class="stretched-link reset-anchor">
-                                            <h3 class="text-white">{{ destination.name }}</h3>
+                                            <h3>{{ destination.name }}</h3>
                                         </a>
                                     </div>
                                     {% endfor %}
@@ -140,7 +139,7 @@
         {% endblock listing_card %}
 
         <div class="col-12 text-center mt-4">
-            <a href="{% url 'catalog' %}"><button class="btn btn-outline-dark">View All Activities</button></a>
+            <a href="{% url 'catalog' %}"><button class="btn btn-outline-warning">View All Activities</button></a>
         </div>
     </div>
     <!-- /.row -->
@@ -157,7 +156,7 @@
                 <li>Travel to the East and South side of the island to visit the famous <strong>Diamond and Tembeling Beach</strong></li>
             </ul>
             <div class="text-center mt-4">
-                <a class="btn btn-outline-dark" href="{% url 'catalog_item' 1 %}" role="button">View Details</a>
+                <a class="btn btn-outline-warning" href="{% url 'catalog_item' 1 %}" role="button">View Details</a>
             </div>
         </div>
         <div class="section-padding col-lg-6">
@@ -183,7 +182,7 @@
                 beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
         </div>
         <div class="col-md-4">
-            <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+            <a class="btn btn-lg btn-warning btn-block" href="#">Call to Action</a>
         </div>
     </div>
 

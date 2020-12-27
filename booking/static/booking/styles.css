@@ -1,3 +1,8 @@
+:root { 
+  --primary-yellow: #ffc107; 
+  --secondary-yellow: #dcb14a; 
+}
+
 html {
   height: 100%;
 }
@@ -9,14 +14,7 @@ body {
   flex-direction: column;
 }
 
-.carousel-item {
-  min-height: 300px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+
 
 /*
 *
@@ -64,6 +62,16 @@ body {
 * ==========================================
 *
 */
+
+.carousel-item {
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 
 .index-header .carousel-item {
   height: 100vh;
@@ -171,7 +179,7 @@ body {
   content: "";
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 6px solid #2b90d9;
+  border-top: 6px solid var(--primary-yellow);
   position: absolute;
   bottom: -6px;
   left: 50%;
@@ -193,9 +201,19 @@ body {
 
 .lined .nav-link.active {
   background: none;
-  color: #555;
-  border-color: #2b90d9;
+  color: var(--primary-yellow);
+  border-color: var(--primary-yellow);
 }
+
+.nav-item a {
+  color: #888;
+}
+.nav-item a:hover,
+.nav-item a:focus {
+  color: var(--primary-yellow);
+  text-decoration: none;
+}
+
 
 /* FOOTER  */
 footer {
@@ -240,6 +258,28 @@ footer {
   background-position: center center;
 }
 
+.text-white-shadow {
+  color: white;
+  text-shadow: 2px 2px 2px #888;
+}
+
+.text-white-shadow:hover {
+  padding-bottom: 10px;
+}
+
+.hover-fx {
+  transition: .5s;
+}
+
+.hover-fx:hover {
+  color: white;
+  text-shadow: 2px 2px 2px #888;
+  opacity: 0.8;
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  transition: all .5s;
+}
+
 /* SECTION HEADER */
 .title {
   font-weight: 700;
@@ -262,7 +302,7 @@ footer {
 
 .listing-item:hover {
   border: none;
-  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
 }
 
 .listing-item a {
@@ -601,6 +641,7 @@ footer {
 .reset-anchor:hover,
 .reset-anchor:focus {
   text-decoration: none;
+  color: inherit;
 }
 
 .asteriskField {

@@ -31,7 +31,7 @@ function filterCatalog(keywords) {
               <div class="card-footer">
                   <div class="d-flex align-items-center justify-content-between rounded-pill bg-light pl-2">
                       <p class="location lead mb-0"><i class="icon fas fa-map-marker-alt"></i><span> ${listings[i].location}</span></p>
-                      <div class="badge badge-danger px-3 py-2 rounded-pill font-weight-normal font-weight-bold">$${listings[i].price}</div>
+                      <div class="badge badge-warning px-3 py-2 rounded-pill font-weight-normal font-weight-bold">$${listings[i].price}</div>
                   </div>
                     </div>
                 </div>
