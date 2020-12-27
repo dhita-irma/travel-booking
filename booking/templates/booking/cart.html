@@ -34,28 +34,26 @@
                     <table class="table">
                         <thead class="bg-light text-center">
                             <tr>
-                                <th class="border-0" scope="col"> <strong
-                                        class="text-small text-uppercase">Activity</strong></th>
-                                <th class="border-0" scope="col"> <strong
-                                        class="text-small text-uppercase">Date</strong></th>
-                                <th class="border-0" scope="col"> <strong
-                                        class="text-small text-uppercase">Price</strong></th>
-                                <th class="border-0" scope="col"> <strong
-                                        class="text-small text-uppercase">QTY</strong></th>
-                                <th class="border-0" scope="col"> <strong
-                                        class="text-small text-uppercase">Subtotal</strong></th>
+                                <th class="border-0" scope="col" style="width: 150px;"> </th>
+                                <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Activity</strong></th>
+                                <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Date</strong></th>
+                                <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Price</strong></th>
+                                <th class="border-0" scope="col"> <strong class="text-small text-uppercase">QTY</strong></th>
+                                <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Subtotal</strong></th>
                                 <th class="border-0" scope="col"> </th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for item in items %}
                             <tr>
-                                <th class="pl-0 border-0" scope="row">
+                                <th class="px-0 border-0" scope="row">
                                     <div class="media align-items-center">
-                                        <a class="reset-anchor d-block animsition-link" href="#"><img src="{{ item.listing.image_url }}" alt="..." width="70" /></a>
-                                        <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="{% url 'catalog_item' item.listing.pk %}">{{ item.listing.title }}</a></strong></div>
+                                        <a class="reset-anchor d-block animsition-link" href="#"><img src="{{ item.listing.image_url }}" class="cart-image"/></a>
                                     </div>
                                 </th>
+                                <td class="align-middle border-0">
+                                    <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="{% url 'catalog_item' item.listing.pk %}">{{ item.listing.title }}</a></strong></div>
+                                </td>
                                 <td class="align-middle border-0 text-center">
                                     <p class="mb-0 ">{{ item.formatted_date }}</p>
                                 </td>
@@ -63,8 +61,8 @@
                                     <p class="mb-0">${{ item.listing.price }}</p>
                                 </td>
                                 <td class="align-middle border-0 p-auto">
-                                    <div class="border d-flex align-items-center justify-content-between px-3">
-                                        <div class="quantity">
+                                    <div class="d-flex align-items-center justify-content-between px-3">
+                                        <div class="quantity border m-auto">
                                             <button data-item="{{ item.id }}" data-id="{{ item.listing.id }}" data-action="remove" data-date="{{ item.formatted_date }}" class="update-cart dec-btn p-0"><i class="fas fa-caret-left"></i></button>
                                             <input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" value="{{ item.quantity }}"/>
                                             <button data-item="{{ item.id }}" data-id="{{ item.listing.id }}" data-action="add" data-date="{{ item.formatted_date }}" class="update-cart inc-btn p-0"><i class="fas fa-caret-right"></i></button>
