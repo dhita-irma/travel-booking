@@ -10,17 +10,12 @@ body {
 }
 
 .carousel-item {
-  height: 65vh;
   min-height: 300px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-.portfolio-item {
-  margin-bottom: 30px;
 }
 
 /*
@@ -70,6 +65,10 @@ body {
 *
 */
 
+.index-header .carousel-item {
+  height: 100vh;
+}
+
 .index-header-wrapper {
   background-color: transparent;
   color: white;
@@ -110,13 +109,7 @@ body {
   text-shadow: 2px 2px 2px grey;
 }
 
-.carousel-item {
-  height: 50vh;
-}
 
-.index-header .carousel-item {
-  height: 100vh;
-}
 
 .item img {
   position: absolute;
@@ -231,7 +224,23 @@ footer {
 }
 
 .feature .desc p {
-  color: #888;
+  font-size: 17px;
+}
+
+
+/* TOP DESTINATIONS  */
+.carousel-nav-icon {
+  height: 48px;
+  width: 48px;
+}
+
+.destinations-carousel .carousel-item .col,
+.destinations-carousel .carousel-item .col-sm,
+.destinations-carousel .carousel-item .col-md {
+  margin: 8px;
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
 }
 
 /* SECTION HEADER */
@@ -380,6 +389,12 @@ footer {
 * ==========================================
 *
 */
+
+/* HEADER  */
+.catalog-header .carousel-item {
+  height: 50vh;
+}
+
 
 @media (min-width: 992px) {
   #filteredCatalog {

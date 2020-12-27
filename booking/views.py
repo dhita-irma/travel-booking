@@ -22,9 +22,12 @@ def index(request):
     """Render homepage"""
 
     popular = Listing.objects.all()
+    destinations = Destination.objects.all()
 
     return render(request, "booking/index.html", {
-        "listings": popular[:4]
+        "listings": popular[:8],
+        "destinations_1": destinations[:4],
+        "destinations_2": destinations[4:8],
     })
 
 

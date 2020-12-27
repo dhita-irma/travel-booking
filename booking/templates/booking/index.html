@@ -9,7 +9,7 @@
 <div class="index-header-wrapper">
     <div class="container">
         <div class="header-title">Explore Indonesia</div>
-        <div class="header-subtitle">Discover and book amazing adventures at exclusive price</div>
+        <div class="lead header-subtitle">Discover and book amazing adventures at exclusive price</div>
 
         <form action="">
             <div class="row pt-3">
@@ -38,38 +38,98 @@
             <img class="icon" src="{% static 'booking/img/globe.png' %}" alt="globe">
             <div class="desc mt-2">
                 <h5>A World of Possibilities</h5>
-                <p>Discover activities across Indonesia</p>
+                <p class="lead">Discover activities across Indonesia</p>
             </div>
         </div>
         <div class="feature col-lg-4">
             <img class="icon" src="{% static 'booking/img/badge.png' %}" alt="globe">
             <div class="desc mt-2">
                 <h5>Best Price Guaranteed</h5>
-                <p>On 1000+ activities and more</p>
+                <p class="lead">On 1000+ activities and more</p>
             </div>
         </div>
         <div class="feature col-lg-4">
             <img class="icon" src="{% static 'booking/img/calendar.png' %}" alt="globe">
             <div class="desc mt-2">
                 <h5>Seamless Booking</h5>
-                <p>Easy and secure reservation process</p>
+                <p class="lead">Easy and secure reservation process</p>
             </div>
         </div>
     </div>
 
     <!-- Top Destinations -->
     <div class="row mt-3">
-        <div class="section-padding col-lg-12 pb-3">
-            <h2 class="title">Incredible Destinations</h2>
+        <div class="my-5 text-center container">
+            <div class="row mb-2">
+                <div class="col text-center">
+                    <h1 class="title">Incredible Destinations</h1>
+                    <p class="lead">Explore stunning places all around Indonesia</p>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center">
+                <div class="col-1 d-flex align-items-center justify-content-center">
+                    <a href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <div class="carousel-nav-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path
+                                    d="m88.6,121.3c0.8,0.8 1.8,1.2 2.9,1.2s2.1-0.4 2.9-1.2c1.6-1.6 1.6-4.2 0-5.8l-51-51 51-51c1.6-1.6 1.6-4.2 0-5.8s-4.2-1.6-5.8,0l-54,53.9c-1.6,1.6-1.6,4.2 0,5.8l54,53.9z" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-10">
+                    <!--Start carousel-->
+                    <div id="carouselExampleIndicators" class="carousel slide destinations-carousel" data-ride="carousel">
+        
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    {% for destination in destinations_1 %}
+                                    <div style="background-image:url('{{ destination.image_url }}');"
+                                        class="col-12 col-md d-flex align-items-center justify-content-center">
+                                        <h3 class="text-white">{{ destination.name }}</h3>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    {% for destination in destinations_2 %}
+                                    <div style="background-image:url('{{ destination.image_url }}');"
+                                        class="col-12 col-md d-flex align-items-center justify-content-center">
+                                        <h3 class="text-white">{{ destination.name }}</h3>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End carousel-->
+                </div>
+                <div class="col-1 d-flex align-items-center justify-content-center"><a href="#carouselExampleIndicators"
+                        data-slide="next">
+                        <div class="carousel-nav-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path
+                                    d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-        <!-- TODO: DESTINATIONS SLIDER  -->
     </div>
 
     <!-- Top Things To Do -->
-    <div class="row mt-3">
-        <div class="section-padding col-lg-12 pb-3">
-            <h2 class="title">Top Things To Do</h2>
+    <div class="row mb-2 mt-5">
+        <div class="col text-center">
+            <h1 class="title">Top Things To Do</h1>
+            <p class="lead">Incredible experiences wherever you are</p>
         </div>
+    </div>
+    <div class="row mt-3">
         {% for listing in listings %}
         <div class="col-lg-3 listing {{ listing.location }} {{ listing.get_categories }} card-padding">
             <div class="card h-100 listing-card">
@@ -82,32 +142,30 @@
                     <p class="card-text card-desc"></p>
                 </div>
                 <div class="card-footer p-2">
-                    US$ {{ listing.price }}<span>/pax</span>
+                    USD {{ listing.price }}<span>/pax</span>
                 </div>
             </div>
         </div>
         {% endfor %}
-        <div class="col-12 text-center">
-            <a href="{% url 'catalog' %}"><button class="btn btn-primary">View All</button></a>
+        <div class="col-12 text-center mt-4">
+            <a href="{% url 'catalog' %}"><button class="btn btn-outline-dark">View All Activities</button></a>
         </div>
     </div>
     <!-- /.row -->
 
     <!-- Featured Activity -->
-    <div class="row featured-activity">
+    <div class="row featured-activity mt-5">
         <div class="section-padding col-lg-6">
             <h2 class="title">Featured Activity</h2>
             <h3>One Day Nusa Penida Trip</h3>
-            <p>Embark on a Nusa Penida day trip from Bali and enjoy a full day of adventure and breathtaking views.</p>
+            <p class="lead">Embark on a Nusa Penida day trip from Bali and enjoy a full day of adventure and breathtaking views.</p>
             <ul>
                 <li>Make a stop at <strong>Kelingking Beach</strong> and have your photo taken with the famed T-Rex shaped cliffs as your backdrop</li>
                 <li>Get a chance to swim the crystal clear emerald waters of the island’s natural infinity pool, <strong>Angel Billabong</strong></li>
                 <li>Travel to the East and South side of the island to visit the famous <strong>Diamond and Tembeling Beach</strong></li>
             </ul>
             <div class="text-center mt-4">
-                <a href="{% url 'catalog_item' 1 %}">
-                    <button class="btn btn-outline-primary">View Details</button>
-                </a>
+                <a class="btn btn-outline-dark" href="{% url 'catalog_item' 1 %}" role="button">View Details</a>
             </div>
         </div>
         <div class="section-padding col-lg-6">
