@@ -86,10 +86,12 @@
                             <div class="carousel-item active">
                                 <div class="row">
                                     {% for destination in destinations_1 %}
-                                    <div style="background-image:url('{{ destination.image_url }}');"
-                                        class="col-12 col-md d-flex align-items-center justify-content-center">
-                                        <h3 class="text-white">{{ destination.name }}</h3>
-                                    </div>
+                                        <div style="background-image:url('{{ destination.image_url }}');"
+                                            class="col-12 col-md d-flex align-items-center justify-content-center">
+                                            <a href="{% url 'catalog_destination' destination.name %}" class="stretched-link reset-anchor">
+                                                <h3 class="text-white">{{ destination.name }}</h3>
+                                            </a>
+                                        </div>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -98,7 +100,9 @@
                                     {% for destination in destinations_2 %}
                                     <div style="background-image:url('{{ destination.image_url }}');"
                                         class="col-12 col-md d-flex align-items-center justify-content-center">
-                                        <h3 class="text-white">{{ destination.name }}</h3>
+                                        <a href="{% url 'catalog_destination' destination.name %}" class="stretched-link reset-anchor">
+                                            <h3 class="text-white">{{ destination.name }}</h3>
+                                        </a>
                                     </div>
                                     {% endfor %}
                                 </div>
