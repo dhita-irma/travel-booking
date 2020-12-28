@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="h2 text-uppercase mb-0">Cart</h1>
+                    <h2 class="title text-uppercase mb-0">SHOPPING CART</h2>
                 </div>
                 <div class="col-lg-6 text-lg-right">
                     <nav aria-label="breadcrumb">
@@ -26,7 +26,6 @@
     </section>
 
     <section class="py-5">
-        <h2 class="h5 text-uppercase mb-4">Shopping cart</h2>
         <div class="row">
             <div class="col-lg-12 mb-4 mb-lg-0">
                 <!-- CART TABLE-->
@@ -58,7 +57,7 @@
                                     <p class="mb-0 ">{{ item.formatted_date }}</p>
                                 </td>
                                 <td class="align-middle border-0 text-center">
-                                    <p class="mb-0">${{ item.listing.price }}</p>
+                                    <p class="mb-0">$ {{ item.listing.price }}</p>
                                 </td>
                                 <td class="align-middle border-0 p-auto">
                                     <div class="d-flex align-items-center justify-content-between px-3">
@@ -70,7 +69,7 @@
                                     </div>
                                 </td>
                                 <td class="align-middle border-0 text-center">
-                                    <p id="subtotal-{{ item.id }}" class="mb-0">${{ item.get_total }}</p>
+                                    <p id="subtotal-{{ item.id }}" class="mb-0">$ {{ item.get_total }}</p>
                                 </td>
                                 <td class="align-middle border-0"><a data-id="{{ item.listing.id }}" data-action="remove_all" data-date="{{ item.formatted_date }}" class="update-cart reset-anchor" href="#"><i class="fas fa-trash-alt small text-muted"></i></a></td>
                             </tr>
@@ -85,9 +84,9 @@
                             <a class="btn btn-link p-0 text-dark btn-sm" href="{% url 'catalog' %}"><i class="fas fa-long-arrow-alt-left mr-2"> </i>Continue shopping</a>
                         </div>
                         <div class="col-md-6 text-md-right">
-                            <h3 id="cart-total">${{ order.get_cart_total }}</h3>
+                            <h3 id="cart-total">$ {{ order.get_cart_total }}</h3>
                             <span>
-                                <a class="btn btn-outline-dark btn-sm" href="{% url 'checkout' %}">Checkout<i class="fas fa-long-arrow-alt-right ml-2"></i></a>
+                                <a class="btn btn-outline-warning btn-sm" href="{% url 'checkout' %}">Checkout<i class="fas fa-long-arrow-alt-right ml-2"></i></a>
                             </span>
                         </div>
                     </div>

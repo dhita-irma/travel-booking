@@ -51,7 +51,7 @@ $(function () {
         });
 
 
-        // FOR DEMO PURPOSE
+        // CONFIRMATION DATE
         $('#reservationDate').on('change', function () {
             var pickedDate = $('input').val();
             $('#pickedDate').html(pickedDate);

@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="h2 text-uppercase mb-0">Checkout</h1>
+                    <h1 class="title text-uppercase mb-0">Checkout</h1>
                 </div>
                 <div class="col-lg-6 text-lg-right">
                     <nav aria-label="breadcrumb">
@@ -27,11 +27,11 @@
     <section class="py-5">
         <!-- BOOKING INFO-->
         <h2 class="h5 text-uppercase mb-4">Booking Details</h2>
-        <div class="row">
-            <div id="contact-info" class="col-lg-8">
+        <div class="row" style="margin-bottom: 300px;">
+            <div id="contact-info" class="col-lg-7">
                 {% crispy contact_form %}
                 <div class="text-center">
-                    <button id="form-btn" class="btn btn-primary">Continue</button>
+                    <button id="form-btn" class="btn btn-warning">Continue</button>
                 </div>
                 <div id="payment-info" class="hidden">
                     <p>Payment Options</p>
@@ -41,7 +41,7 @@
 
 
             <!-- ORDER SUMMARY-->
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <div class="card border-0 rounded-0 p-lg-4 bg-light">
                     <div class="card-body">
                         <h5 class="text-uppercase mb-4">Your order</h5>
@@ -49,12 +49,11 @@
                             {% for item in items %}
                             <li class="d-flex align-items-center justify-content-between"><strong
                                     class="small font-weight-bold">{{ item.listing.title }}</strong><span
-                                    class="text-muted small">USD
-                                    {{ item.listing.price }}</span></li>
+                                    class="text-muted small">$ {{ item.listing.price }}</span></li>
                             <li class="border-bottom my-2"></li>
                             {% endfor %}
                             <li class="d-flex align-items-center justify-content-between"><strong
-                                    class="text-uppercase small font-weight-bold">Total</strong><span>USD
+                                    class="text-uppercase small font-weight-bold">Total</strong><span>$
                                     {{ order.get_cart_total }}</span>
                             </li>
                         </ul>
