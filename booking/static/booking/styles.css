@@ -55,6 +55,12 @@ body {
   color: #555;
 }
 
+@media only screen and (min-width: 992px) {
+  .navbar-padding {
+    padding-top: 56px;
+  }
+}
+
 /*
 *
 * ==========================================
@@ -101,14 +107,23 @@ body {
   margin: 0px auto -10vh auto;
 }
 
+@media only screen and (max-width: 768px) {
+  #ExploreIndonesia{
+    top: -40vh;
+  }
+}
+
+.header-title {
+  font-weight: 700;
+  text-shadow: 2px 2px 2px grey;
+}
+
 .index-header-wrapper .header-title {
   font-size: 5vw;
 }
 
-.header-title {
-  font-size: 4vw;
-  font-weight: 700;
-  text-shadow: 2px 2px 2px grey;
+.header-wrapper .header-title {
+  font-size: 65px;
 }
 
 .index-header-wrapper .header-subtitle {
@@ -228,6 +243,26 @@ footer {
 *
 */
 
+/* HOMEPAGE TOP MARGIN */
+.catalog-margin {
+  margin-top: -15vh;
+}
+
+.homepage-margin {
+  margin-top: -30px;
+}
+
+@media only screen and (min-width: 992px) {
+  .homepage-margin {
+    margin-top: 50px;
+  }
+
+  .catalog-margin {
+    margin-top: 0px;
+  }
+}
+
+
 /* WEBSITE FEATURES */
 
 .feature {
@@ -249,13 +284,34 @@ footer {
   width: 48px;
 }
 
+
 .destinations-carousel .carousel-item .col,
 .destinations-carousel .carousel-item .col-sm,
 .destinations-carousel .carousel-item .col-md {
   margin: 8px;
-  height: 300px;
+  height: 100px;
   background-size: cover;
   background-position: center center;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .destinations-carousel .carousel-item .col,
+  .destinations-carousel .carousel-item .col-sm,
+  .destinations-carousel .carousel-item .col-md {
+    margin: 8px;
+    height: 200px;
+  }
+}
+
+
+@media only screen and (min-width: 992px) {
+  .destinations-carousel .carousel-item .col,
+  .destinations-carousel .carousel-item .col-sm,
+  .destinations-carousel .carousel-item .col-md {
+    margin: 8px;
+    height: 300px;
+  }
 }
 
 .text-white-shadow {
@@ -280,10 +336,10 @@ footer {
   transition: all .5s;
 }
 
+
 /* SECTION HEADER */
 .title {
   font-weight: 700;
-  /* height: 34px; */
 }
 
 @media (min-width: 992px) {
@@ -652,9 +708,6 @@ footer {
   display: none;
 }
 
-.navbar-padding {
-  padding-top: 56px;
-}
 
 .letter-spacing {
   letter-spacing: 0.07em;

@@ -17,16 +17,16 @@
 
 
 {% block headerText %}
-<div class="header-wrapper">
-    <div class="container">
-        <div class="header-title">Explore Indonesia</div>
+    <div id="ExploreIndonesia" class="header-wrapper">
+        <div class="container header-title">
+            Explore Indonesia
+        </div>
     </div>
-</div>
 {% endblock %}
 
 
 {% block body %}
-<div class="container">
+<div class="container catalog-margin">
 
     <!-- Page Heading/Breadcrumbs -->
     <div class="border-bottom">
@@ -39,7 +39,7 @@
             <div class="pt-3">
                 
                 <!-- Destinations -->
-                <div class="border-bottom pb-3">
+                <div class="pb-3">
                     <h5 class="letter-spacing">Destinations</h5>
                     <div class="pl-3">
                         {% for destination in destinations %}
@@ -50,20 +50,6 @@
                         {% endfor %}
                     </div>
                 </div>
-
-                <!-- Categories -->
-                <div class="py-3">
-                    <h5 class="letter-spacing">Categories</h5>
-                    <div class="pl-3">
-                        {% for category in categories %}
-                        <div class="form-check">
-                            <input value="{{ category }}" type="checkbox" class="form-check-input">
-                            <label class="form-check-label">{{ category }}</label>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-
             </div>
         </div>
 
