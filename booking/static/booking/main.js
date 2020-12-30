@@ -26,7 +26,7 @@ function filterCatalog(keywords) {
           <div class="listing-item card bg-white rounded">
               <img src="${listings[i].image_url}" class="img-fluid card-img-top">
               <div class="card-body px-4 pt-4 pb-1">
-                  <h6> <a href="{% url 'catalog_item' ${listings[i].id} %}" class="text-dark stretched-link">${listings[i].title}</a></h6>
+                  <h6> <a href="/catalog/${listings[i].id}" class="text-dark stretched-link">${listings[i].title}</a></h6>
               </div>
               <div class="card-footer">
                   <div class="d-flex align-items-center justify-content-between rounded-pill bg-light pl-2">
