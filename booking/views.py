@@ -77,19 +77,27 @@ def catalog_item(request, pk):
     })
 
 
-def filter(request, location):
-    """API returning filtered listings based on location"""
-    
-    # Query for requested location
-    try:
-        location_id = Destination.objects.get(name=location).id
-    except Destination.DoesNotExist:
-        return JsonResponse({"error": f"Destination '{location}' not found."}, status=404)
+def search(request):
+    """API that takes query inputs and return JSON data of listings that match the queries"""
 
-    # Return filtered listings
     if request.method == 'GET':
-        listings = Listing.objects.filter(location=location_id)
-        return JsonResponse([listing.serialize() for listing in listings], safe=False)
+        queries = request.GET.get('q')
+
+        # Get a list of queries split by space
+        queries = queries.split(" ") 
+        queryset = []
+        
+        for q in queries:
+            listings = Listing.objects.filter(
+                Q(title__icontains=q) | Q(description__icontains=q) | Q(location__name__icontains=q)
+            ).distinct()
+            queryset += [listing for listing in listings]
+
+        # Get a list of UNIQUE queryset
+        queryset = list(set(queryset))
+
+        # Return JSON representation of queryset
+        return JsonResponse([listing.serialize() for listing in queryset], safe=False)
     else:
         return JsonResponse({"error": "GET request required."}, status=400)
 
@@ -265,31 +273,6 @@ def profile(request):
             "contact_form": forms.ContactInfoForm(user.contact_info.all().last())
         })
     
-
-def search(request):
-    """API that takes query inputs and return JSON data of listings that match the queries"""
-
-    if request.method == 'GET':
-        queries = request.GET.get('q')
-
-        # Get a list of queries split by space
-        queries = queries.split(" ") 
-        queryset = []
-        
-        for q in queries:
-            listings = Listing.objects.filter(
-                Q(title__icontains=q) | Q(description__icontains=q) | Q(location__name__icontains=q)
-            ).distinct()
-            queryset += [listing for listing in listings]
-
-        # Get a list of UNIQUE queryset
-        queryset = list(set(queryset))
-
-        # Return JSON representation of queryset
-        return JsonResponse([listing.serialize() for listing in queryset], safe=False)
-    else:
-        return JsonResponse({"error": "GET request required."}, status=400)
-
 
 def register(request):
     if request.method == "POST":

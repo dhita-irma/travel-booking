@@ -32,6 +32,5 @@ admin.site.register(Destination, DestinationAdmin)
 admin.site.register(Category)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem, OrderItemAdmin)
-admin.site.register(ShippingAddress)
 admin.site.register(ContactInfo, ContactInfoAdmin)
 

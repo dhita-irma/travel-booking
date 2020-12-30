@@ -19,7 +19,6 @@ urlpatterns = [
     path("profile/", views.profile, name="profile"),
 
     # API routes
-    path("filter/<str:location>", views.filter, name="filter"),
     path("update_cart/", views.update_cart, name="update_item"),
     path("process_order/", views.process_order, name="process_order"),
     path("search/", views.search, name="search")
