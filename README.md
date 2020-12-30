@@ -32,13 +32,13 @@ Contains models as follow:
 * OrderItem: each item that is orderd, same item with different reservation_date is count as separate item 
 * ContactInfo: used to store contact information for booking details 
 
-### JavaScript files 
+#### JavaScript files 
 Located in booking/static/booking/
 * front.js: Handles the front end of behavior the website such as Date Picker and Navigation bar 
 * main.js: JS code for checkbox filtering and dynamic search bar. In each action performed, this JS code fetch information from search API, returns the data, and display it back to the user without reloading the webpage
 * cart.js: JS code to assign some buttons to update cart on click, and submiting the booking details form data when the payment button is clicked
 
-## Justification of why this final project is distict and more complicated than previous projects
+## Justification of why this final project is distinct and more complex than previous projects
 - This project has a dynamic search bar feature that has never been done in the previous project. Search bar is implemented using JavaScript to deliver instant result below the search bar that changes as the user type in the box 
 - This project also has checkbox filtering feature that is implemented using JavaScript to fetch filtered activies using API, allowing the website to filter listings based on destination without ever refreshing the page, makes the filtering experience much faster 
 - In each listing page, there is a reccomendation section at the bottom of the page, automatically showing activities in the same destination 
