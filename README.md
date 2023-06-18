@@ -1,4 +1,4 @@
-# CS502 Final Project - Travel Booking Website 
+# TRAVORA - Travel Booking Website 
 TRAVORA is an online travel booking website that provides attractions and activities for various destinations in Indonesia. User can browse activities in all destinations and they can also filter the catalog based on the location. After that, they can pick dates to make reservation, add it to the cart and and pay it via Paypal. 
 
 ## Features 
